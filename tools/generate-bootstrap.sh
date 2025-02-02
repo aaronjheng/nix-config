@@ -39,4 +39,7 @@ gpg --export-ownertrust > gnupg-ownertrust
 cp ~/.ssh/id_ed25519.pub .
 cp ~/.ssh/id_ed25519 .
 
+# Brewfile
+brew bundle dump --casks
+
 popd 1>/dev/null

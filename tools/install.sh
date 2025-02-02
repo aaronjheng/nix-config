@@ -35,6 +35,9 @@ cp -R /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/
 
 hdiutil detach /Volumes/Google\ Chrome
 
+# Xcode Command Line Tools
+xcode-select --install
+
 # GnuPG keys
 gpg --import gnupg-public-keys.asc
 gpg --import gnupg-private-keys.asc
@@ -56,6 +59,9 @@ pushd "${PROJECT_ROOT}" 1>/dev/null
 
 # Homebrew
 just install-brew
+
+# Homebrew Bundle
+brew bundle install --file=bootstrap/Brewfile
 
 # Nix
 just install-nix
