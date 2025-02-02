@@ -19,6 +19,10 @@
     ];
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   security.sudo.extraConfig = ''
     %admin       ALL=(ALL) NOPASSWD: ALL
 
@@ -83,7 +87,6 @@
       btop
       buf
       chezmoi
-      # clash-rs
       cue
       curl
       delta
@@ -104,7 +107,9 @@
       kubectl
       lsof
       mitmproxy
-      # mysql-shell
+      (mysql-shell.override {
+        stdenv = llvmPackages_18.stdenv;
+      })
       nix-zsh-completions
       nix-update
       nixd
