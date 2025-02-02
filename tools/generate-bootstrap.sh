@@ -2,8 +2,8 @@
 #!nix-shell -i bash -p gojq xh wget2 curl gnupg
 
 PROJECT_ROOT="$(
-	cd "$(dirname "$0")/.."
-	pwd
+  cd "$(dirname "$0")/.."
+  pwd
 )"
 pushd "${PROJECT_ROOT}/bootstrap" 1>/dev/null
 
