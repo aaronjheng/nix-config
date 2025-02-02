@@ -2,8 +2,8 @@
 #!nix-shell -i bash -p gojq xh wget2 curl gnupg
 
 PROJECT_ROOT="$(
-  cd "$(dirname "$0")/.."
-  pwd
+	cd "$(dirname "$0")/.."
+	pwd
 )"
 pushd "${PROJECT_ROOT}/bootstrap" 1>/dev/null
 
@@ -14,7 +14,6 @@ clash_version=$(xh --auth-type bearer --auth ${GITHUB_TOKEN} get https://api.git
 just_version=$(xh --auth-type bearer --auth ${GITHUB_TOKEN} get https://api.github.com/repos/casey/just/releases/latest | gojq -r '.tag_name' | sed 's/^v//')
 
 readonly chezmoi_version clash_version just_version
-
 
 wget2 -O chezmoi "https://github.com/twpayne/chezmoi/releases/download/v${chezmoi_version}/chezmoi-darwin-arm64"
 
@@ -28,11 +27,11 @@ cp -f ~/.config/clash/config.yaml clash.yaml
 cp -f ~/.config/chezmoi/chezmoi.toml chezmoi.toml
 
 # GnuPG
-gpg -a --export > gnupg-public-keys.asc
+gpg -a --export >gnupg-public-keys.asc
 
-gpg -a --export-secret-keys > gnupg-private-keys.asc
+gpg -a --export-secret-keys >gnupg-private-keys.asc
 
-gpg --export-ownertrust > gnupg-ownertrust
+gpg --export-ownertrust >gnupg-ownertrust
 
 # SSH
 

@@ -3,8 +3,8 @@
 set -eu
 
 PROJECT_ROOT="$(
-  cd "$(dirname "$0")/.."
-  pwd
+	cd "$(dirname "$0")/.."
+	pwd
 )"
 pushd "${PROJECT_ROOT}/bootstrap" 1>/dev/null
 

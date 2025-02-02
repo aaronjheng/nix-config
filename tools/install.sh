@@ -1,32 +1,32 @@
 #!/usr/bin/env bash
 
 PROJECT_ROOT="$(
-  cd "$(dirname "$0")/.."
-  pwd
+	cd "$(dirname "$0")/.."
+	pwd
 )"
 pushd "${PROJECT_ROOT}/bootstrap" 1>/dev/null
 
 # Proxy
 function proxy_on() {
-  export HTTP_PROXY=http://127.0.0.1:7890
-  export HTTPS_PROXY=http://127.0.0.1:7890
-  export ALL_PROXY=socks5://127.0.0.1:7890
-  export NO_PROXY=localhost,internal.domain,.local,example.dev,.example.dev,10.0.0.1/8,127.0.0.1/24,192.168.0.1/16
+	export HTTP_PROXY=http://127.0.0.1:7890
+	export HTTPS_PROXY=http://127.0.0.1:7890
+	export ALL_PROXY=socks5://127.0.0.1:7890
+	export NO_PROXY=localhost,internal.domain,.local,example.dev,.example.dev,10.0.0.1/8,127.0.0.1/24,192.168.0.1/16
 
-  export http_proxy=http://127.0.0.1:7890
-  export https_proxy=http://127.0.0.1:7890
-  export all_proxy=socks5://127.0.0.1:7890
-  export no_proxy=localhost,internal.domain,.local,example.dev,.example.dev,10.0.0.1/8,127.0.0.1/24,192.168.0.1/16
+	export http_proxy=http://127.0.0.1:7890
+	export https_proxy=http://127.0.0.1:7890
+	export all_proxy=socks5://127.0.0.1:7890
+	export no_proxy=localhost,internal.domain,.local,example.dev,.example.dev,10.0.0.1/8,127.0.0.1/24,192.168.0.1/16
 }
 
 function system_proxy_setup() {
-  host="127.0.0.1"
-  port="7890"
+	host="127.0.0.1"
+	port="7890"
 
-  networksetup -setsecurewebproxy 'Wi-Fi' "${host}" "${port}"
-  networksetup -setwebproxy 'Wi-Fi' "${host}" "${port}"
-  networksetup -setsocksfirewallproxy 'Wi-Fi' "${host}" "${port}"
-  networksetup -setproxybypassdomains 'Wi-Fi' 'localhost' 'internal.domain' '*.local' 'example.dev' '*.example.dev' '10.*' '127.0.0.*' '192.168.*'
+	networksetup -setsecurewebproxy 'Wi-Fi' "${host}" "${port}"
+	networksetup -setwebproxy 'Wi-Fi' "${host}" "${port}"
+	networksetup -setsocksfirewallproxy 'Wi-Fi' "${host}" "${port}"
+	networksetup -setproxybypassdomains 'Wi-Fi' 'localhost' 'internal.domain' '*.local' 'example.dev' '*.example.dev' '10.*' '127.0.0.*' '192.168.*'
 }
 
 proxy_on
@@ -54,8 +54,6 @@ hdiutil detach /Volumes/Google\ Chrome
 # Xcode Command Line Tools
 xcode-select --install
 
-
-
 # GnuPG keys
 gpg --import gnupg-public-keys.asc
 gpg --import gnupg-private-keys.asc
@@ -71,7 +69,7 @@ chmod 600 ~/.ssh/id_ed25519
 chmod 644 ~/.ssh/id_ed25519.pub
 
 # dotfiles
-chezmoi init --apply --verbose aaronjheng
+chezmoi init --ssh --apply --verbose aaronjheng
 
 pushd "${PROJECT_ROOT}" 1>/dev/null
 
