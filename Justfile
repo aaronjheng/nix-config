@@ -34,4 +34,4 @@ update-darwin:
 	sudo nix-channel --update
 
 uninstall-darwin:
-	nix --extra-experimental-features "nix-command flakes" run nix-darwin#darwin-uninstaller
+	darwin-uninstaller

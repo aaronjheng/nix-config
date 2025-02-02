@@ -69,6 +69,7 @@
       "pictogram"
       "visual-studio-code"
       "ghostty"
+      "opencore-patcher"
       "postman"
       "wireshark"
       "iina"
