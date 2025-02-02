@@ -47,4 +47,62 @@
     # End Nix
   '';
 
+  services.nix-daemon.enable = false;
+
+  users.users.aaron.packages = with pkgs; [
+      atuin
+      awscli2
+      bat
+      bind
+      broot
+      btop
+      buf
+      chezmoi
+      clash-rs
+      cue
+      curl
+      delta
+      dust
+      duf
+      fd
+      gcc
+      gh
+      git
+      gnupg
+      go
+      gojq
+      golangci-lint
+      goreman
+      inetutils
+      just
+      k6
+      kubectl
+      lsof
+      mitmproxy
+      # mysql-shell
+      nix-zsh-completions
+      nix-update
+      nixd
+      nixfmt-rfc-style
+      nixpkgs-review
+      oath-toolkit
+      pnpm
+      poetry
+      postgresql
+      tmux
+      trunk-io
+      temporal-cli
+      uv
+      vault
+      vim
+      wget2
+      xh
+      zig
+      zig-shell-completions
+      zls
+      zoxide
+      zsh-completions
+  ]++[
+    iproute2mac
+  ];
 }
