@@ -40,6 +40,7 @@
 
   programs.zsh.enable = true;
   programs.zsh.shellInit = ''
+
     # Nix
     if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
       . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -48,6 +49,28 @@
   '';
 
   services.nix-daemon.enable = false;
+
+  homebrew = {
+    enable = true;
+    casks = [
+      "appcleaner"
+      "obsidian"
+      "typora"
+      "chatgpt"
+      "openvpn-connect"
+      "utm"
+      "figma"
+      "pictogram"
+      "visual-studio-code"
+      "ghostty"
+      "postman"
+      "wireshark"
+      "iina"
+      "raycast"
+      "keka"
+      "rectangle"
+    ];
+  };
 
   users.users.aaron.packages =
     with pkgs;

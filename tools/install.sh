@@ -76,9 +76,6 @@ pushd "${PROJECT_ROOT}" 1>/dev/null
 # Homebrew
 just install-brew
 
-# Homebrew Bundle
-brew bundle install --file=bootstrap/Brewfile
-
 # Nix
 just install-nix
 
