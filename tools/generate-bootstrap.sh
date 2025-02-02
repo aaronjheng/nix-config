@@ -20,11 +20,12 @@ wget2 -O chezmoi "https://github.com/twpayne/chezmoi/releases/download/v${chezmo
 
 wget2 -O clash "https://github.com/Watfaq/clash-rs/releases/download/v${clash_version}/clash-aarch64-apple-darwin"
 
-cp -f ~/.config/clash/config.yaml clash.yaml
-
 curl -L "https://github.com/casey/just/releases/download/${just_version}/just-${just_version}-aarch64-apple-darwin.tar.gz" | tar -xz
 
 wget2 -O google-chrome.dmg https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg
+
+cp -f ~/.config/clash/config.yaml clash.yaml
+cp -f ~/.config/chezmoi/chezmoi.toml chezmoi.toml
 
 # GnuPG
 gpg -a --export > gnupg-public-keys.asc
