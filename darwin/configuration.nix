@@ -11,8 +11,8 @@
     experimental-features = [
       "nix-command"
     ];
-    extra-trusted-users = [
-      "aaron"
+    trusted-users = [
+      "@admin"
     ];
     substituters = [
       "https://mirrors.ustc.edu.cn/nix-channels/store"
