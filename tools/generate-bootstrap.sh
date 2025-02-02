@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p gojq xh wget2
+#!nix-shell -i bash -p gojq xh wget2 curl gnupg
 
 PROJECT_ROOT="$(
 	cd "$(dirname "$0")/.."
