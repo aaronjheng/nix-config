@@ -28,7 +28,7 @@
 
     Defaults:%admin env_keep += "HTTP_PROXY HTTPS_PROXY ALL_PROXY NO_PROXY"
     Defaults:%admin env_keep += "http_proxy https_proxy all_proxy no_proxy"
-    Defaults:%admin env_keep += "TERMINFO"
+    Defaults:%admin env_keep += "TERMINFO TERMINFO_DIRS"
   '';
 
   environment.shells = with pkgs; [
