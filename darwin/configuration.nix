@@ -49,7 +49,9 @@
 
   services.nix-daemon.enable = false;
 
-  users.users.aaron.packages = with pkgs; [
+  users.users.aaron.packages =
+    with pkgs;
+    [
       atuin
       awscli2
       bat
@@ -58,7 +60,7 @@
       btop
       buf
       chezmoi
-      clash-rs
+      # clash-rs
       cue
       curl
       delta
@@ -102,7 +104,8 @@
       zls
       zoxide
       zsh-completions
-  ]++[
-    iproute2mac
-  ];
+    ]
+    ++ [
+      iproute2mac
+    ];
 }
