@@ -1,35 +1,48 @@
-set dotenv-load
+set dotenv-load := true
 
 install-nix:
-	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
 
 uninstall-nix:
-	sudo /nix/nix-installer uninstall
+    sudo /nix/nix-installer uninstall
 
+[macos]
 install-brew:
-	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+[macos]
 uninstall-brew:
-	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 
-setup-darwin:
-	sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
-	sudo nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
-	sudo HTTPS_PROXY='http://127.0.0.1:7890' nix-channel --update
+[macos]
+check-darwin-variant:
+    @echo "Darwin variant: {{ env('DARWIN_VARIANT') }}"
 
-	sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
-	sudo cp -r darwin/ /etc/nix-darwin
+[macos]
+setup-darwin: check-darwin-variant
+    #!/usr/bin/env bash
+    sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
+    sudo nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
+    sudo nix-channel --update
 
-	nix-build '<darwin>' -A darwin-rebuild
-	./result/bin/darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix
-	rm -rf ./result
+    sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
+    sudo cp -r darwin/ /etc/nix-darwin
 
-rebuild-darwin:
-	sudo cp -r darwin/ /etc/nix-darwin
-	darwin-rebuild switch
+    nix-build '<darwin>' -A darwin-rebuild
+    ./result/bin/darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix
+    rm -rf ./result
 
+[macos]
+rebuild-darwin: check-darwin-variant
+    #!/usr/bin/env bash
+    variant="{{ env('DARWIN_VARIANT') }}"
+    sudo cp -r darwin/ /etc/nix-darwin
+    darwin-rebuild switch -I darwin-variant={{ justfile_directory() }}/darwin/variant/${variant}.nix
+
+[macos]
 update-darwin:
-	sudo nix-channel --update
+    sudo nix-channel --update
 
+[macos]
 uninstall-darwin:
-	darwin-uninstaller
+    darwin-uninstaller
