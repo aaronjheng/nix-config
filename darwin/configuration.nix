@@ -42,7 +42,7 @@
   '';
 
   fonts.packages = with pkgs; [
-    (callPackage ./pkgs/lucida-console.nix { })
+    (callPackage ./pkg/lucida-console.nix { })
     vistafonts
   ];
 
