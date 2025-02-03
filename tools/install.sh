@@ -87,4 +87,6 @@ just setup-darwin
 
 popd 1>/dev/null
 
+sudo rm -rf /etc/sudoers.d/admin
+
 popd 1>/dev/null
