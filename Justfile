@@ -18,13 +18,15 @@ setup-darwin:
 	sudo HTTPS_PROXY='http://127.0.0.1:7890' nix-channel --update
 
 	sudo mv /etc/nix/nix.conf /etc/nix/nix.conf.before-nix-darwin
+	sudo cp -r darwin/ /etc/nix-darwin
 
 	nix-build '<darwin>' -A darwin-rebuild
-	./result/bin/darwin-rebuild switch -I darwin-config={{justfile_directory()}}/darwin/configuration.nix
+	./result/bin/darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix
 	rm -rf ./result
 
 rebuild-darwin:
-	darwin-rebuild switch -I darwin-config={{justfile_directory()}}/darwin/configuration.nix
+	sudo cp -r darwin/ /etc/nix-darwin
+	darwin-rebuild switch
 
 update-darwin:
 	sudo nix-channel --update
