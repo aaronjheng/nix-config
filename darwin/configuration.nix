@@ -6,7 +6,6 @@
 }:
 
 {
-
   imports = [
     <darwin-variant>
   ];
@@ -43,6 +42,7 @@
   '';
 
   fonts.packages = with pkgs; [
+    (callPackage ./pkgs/lucida-console.nix { })
     vistafonts
   ];
 
