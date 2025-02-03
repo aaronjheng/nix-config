@@ -32,11 +32,23 @@
     Defaults:%admin env_keep += "TERMINFO TERMINFO_DIRS"
   '';
 
+  fonts.packages = with pkgs; [
+    vistafonts
+  ];
+
   environment.shells = with pkgs; [
     zsh
   ];
 
   environment.systemPackages = with pkgs; [
+    curl
+    delta
+    git
+    gnupg
+    inetutils
+    less
+    lsof
+    tmux
     vim
   ];
 
@@ -62,14 +74,11 @@
       "appcleaner"
       "obsidian"
       "typora"
-      "chatgpt"
       "openvpn-connect"
-      "utm"
       "figma"
       "pictogram"
       "visual-studio-code"
       "ghostty"
-      "opencore-patcher"
       "postman"
       "wireshark"
       "iina"
@@ -79,64 +88,51 @@
     ];
   };
 
-  users.users.aaron.packages =
-    with pkgs;
-    [
-      atuin
-      awscli2
-      bat
-      bind
-      broot
-      btop
-      buf
-      chezmoi
-      cue
-      curl
-      delta
-      dust
-      duf
-      fd
-      gcc
-      gh
-      git
-      gnupg
-      go
-      gojq
-      golangci-lint
-      goreman
-      inetutils
-      just
-      k6
-      kubectl
-      lsof
-      mitmproxy
-      (mysql-shell.override {
-        stdenv = llvmPackages_18.stdenv;
-      })
-      nix-zsh-completions
-      nix-update
-      nixd
-      nixfmt-rfc-style
-      nixpkgs-review
-      oath-toolkit
-      pnpm
-      poetry
-      postgresql
-      tmux
-      trunk-io
-      temporal-cli
-      uv
-      vault
-      vim
-      wget2
-      xh
-      zig
-      zig-shell-completions
-      zls
-      zoxide
-      zsh-completions
-    ]
-    ++ [
-      iproute2mac
-    ];
+  users.users.aaron.packages = with pkgs; [
+    atuin
+    awscli2
+    bat
+    bind
+    broot
+    btop
+    buf
+    chezmoi
+    cue
+    dust
+    duf
+    fd
+    gh
+    go
+    gojq
+    golangci-lint
+    goreman
+    iproute2mac
+    just
+    k6
+    kubectl
+    mitmproxy
+    (mysql-shell.override {
+      stdenv = llvmPackages_18.stdenv;
+    })
+    nix-zsh-completions
+    nix-update
+    nixd
+    nixfmt-rfc-style
+    nixpkgs-review
+    oath-toolkit
+    pnpm
+    poetry
+    postgresql
+    trunk-io
+    temporal-cli
+    uv
+    vault
+    wget2
+    xh
+    zig
+    zig-shell-completions
+    zls
+    zoxide
+    zsh-completions
+  ];
 }
