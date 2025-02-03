@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eu
 
 PROJECT_ROOT="$(
 	cd "$(dirname "$0")/.."
@@ -35,6 +36,9 @@ system_proxy_setup
 
 export NIXPKGS_ALLOW_INSECURE=1
 export NIXPKGS_ALLOW_UNFREE=1
+
+# Checks
+just confirm-darwin-variant
 
 # sudo
 sudo tee /etc/sudoers.d/admin <<"ADMIN"
