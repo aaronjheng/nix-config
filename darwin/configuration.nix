@@ -98,6 +98,10 @@
     ];
   };
 
+  users.users.aaron.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOX8ktOiPEPgsSBqx8OKMSYJ7opYbQe34aT0wmwfyUiX aaron@aarons"
+  ];
+
   users.users.aaron.packages = with pkgs; [
     atuin
     awscli2
