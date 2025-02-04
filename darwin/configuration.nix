@@ -78,6 +78,8 @@
 
   services.nix-daemon.enable = false;
 
+  services.openssh.enable = true;
+
   homebrew = {
     enable = true;
     casks = [
