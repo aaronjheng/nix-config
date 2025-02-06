@@ -52,5 +52,8 @@ update-darwin:
     sudo nix-channel --update
 
 [macos]
+upgrade-darwin: update-darwin rebuild-darwin
+
+[macos]
 uninstall-darwin:
     darwin-uninstaller
