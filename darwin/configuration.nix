@@ -124,7 +124,7 @@
     just
     k6
     kubectl
-    mitmproxy
+    # mitmproxy
     (mysql-shell.override {
       stdenv = llvmPackages_18.stdenv;
     })
