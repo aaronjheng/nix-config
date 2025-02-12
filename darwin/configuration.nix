@@ -12,7 +12,7 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
 
-  nix.useDaemon = true;
+  nix.enable = false;
 
   nix.settings = {
     experimental-features = [
@@ -73,8 +73,6 @@
     fi
     # End Nix
   '';
-
-  services.nix-daemon.enable = false;
 
   services.openssh.enable = true;
 
