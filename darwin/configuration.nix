@@ -56,6 +56,7 @@
     inetutils
     less
     lsof
+    rsync
     tmux
     vim
   ];
@@ -65,14 +66,6 @@
   ];
 
   programs.zsh.enable = true;
-  programs.zsh.shellInit = ''
-
-    # Nix
-    if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-      . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    fi
-    # End Nix
-  '';
 
   services.openssh.enable = true;
 
