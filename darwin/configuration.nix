@@ -3,11 +3,6 @@
   ...
 }:
 
-let
-
-  nixpkgs = import <nixpkgs> { };
-
-in
 {
   imports = [
     <darwin-variant>
