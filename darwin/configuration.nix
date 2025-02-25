@@ -123,7 +123,7 @@
     nixfmt-rfc-style
     nixpkgs-review
     oath-toolkit
-    pnpm
+    pnpm_9
     poetry
     postgresql
     trunk-io
