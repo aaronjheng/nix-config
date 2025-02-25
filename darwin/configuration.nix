@@ -116,9 +116,7 @@
     k6
     kubectl
     # mitmproxy
-    (mysql-shell.override {
-      stdenv = llvmPackages_18.stdenv;
-    })
+    mysql-shell
     nix-zsh-completions
     nix-update
     nixd
