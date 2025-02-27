@@ -125,6 +125,7 @@
     oath-toolkit
     pnpm_9
     poetry
+    poppler_utils
     postgresql
     trunk-io
     temporal-cli
