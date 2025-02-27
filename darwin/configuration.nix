@@ -65,7 +65,12 @@
     "$HOME/.local/state/nix/profile"
   ];
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    enableFzfCompletion = true;
+  };
 
   services.openssh.enable = true;
 
