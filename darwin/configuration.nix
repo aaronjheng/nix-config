@@ -59,6 +59,7 @@
     rsync
     tmux
     vim
+    zsh-autosuggestions
   ];
 
   environment.profiles = [
@@ -68,8 +69,12 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    enableGlobalCompInit = false;
     enableSyntaxHighlighting = true;
     enableFzfCompletion = true;
+    interactiveShellInit = ''
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    '';
   };
 
   services.openssh.enable = true;
