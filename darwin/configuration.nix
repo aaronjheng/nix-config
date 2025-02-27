@@ -115,7 +115,7 @@
     just
     k6
     kubectl
-    # mitmproxy
+    mitmproxy
     mysql-shell
     nix-zsh-completions
     nix-update
