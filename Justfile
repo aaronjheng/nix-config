@@ -52,6 +52,8 @@ update-darwin:
 
 [macos]
 upgrade-darwin: update-darwin rebuild-darwin
+    brew update
+    brew upgrade
 
 [macos]
 uninstall-darwin:
