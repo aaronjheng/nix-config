@@ -59,6 +59,7 @@
     rsync
     tmux
     vim
+    zsh-completions
     zsh-autosuggestions
   ];
 
@@ -129,7 +130,6 @@
     kubectl
     mitmproxy
     mysql-shell
-    nix-zsh-completions
     nix-update
     nixd
     nixfmt-rfc-style
@@ -149,6 +149,5 @@
     zig-shell-completions
     zls
     zoxide
-    zsh-completions
   ];
 }
