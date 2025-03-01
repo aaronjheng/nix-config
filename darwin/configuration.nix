@@ -54,6 +54,7 @@
     git
     gnupg
     inetutils
+    iproute2mac
     less
     lsof
     rsync
@@ -124,7 +125,6 @@
     gojq
     golangci-lint
     goreman
-    iproute2mac
     just
     k6
     kubectl
