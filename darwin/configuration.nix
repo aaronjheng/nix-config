@@ -113,6 +113,7 @@
     btop
     buf
     chezmoi
+    clash-rs
     cue
     dust
     duf
