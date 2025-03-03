@@ -14,18 +14,6 @@
 
   nix.enable = false;
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-    ];
-    trusted-users = [
-      "@admin"
-    ];
-    substituters = [
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-    ];
-  };
-
   nixpkgs.config = {
     allowUnfree = true;
   };
