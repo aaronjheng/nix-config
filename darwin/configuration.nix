@@ -125,7 +125,6 @@
     nixpkgs-review
     oath-toolkit
     pnpm_9
-    poetry
     poppler-utils
     postgresql
     trunk-io
