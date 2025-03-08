@@ -116,7 +116,6 @@
     just
     k6
     kubectl
-    migrate-to-uv
     mitmproxy
     mysql-shell
     nix-update
