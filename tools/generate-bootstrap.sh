@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p gojq xh wget2 curl gnupg
+#!nix-shell -i bash -p gojq xh wget2 curl gnupg gh
 
 PROJECT_ROOT="$(
 	cd "$(dirname "$0")/.."
@@ -8,6 +8,8 @@ PROJECT_ROOT="$(
 pushd "${PROJECT_ROOT}/bootstrap" 1>/dev/null
 
 echo "Generating bootstrap files"
+
+GITHUB_TOKEN=$(gh auth token)
 
 chezmoi_version=$(xh --auth-type bearer --auth ${GITHUB_TOKEN} get https://api.github.com/repos/twpayne/chezmoi/releases/latest | gojq -r '.tag_name' | sed 's/^v//')
 clash_version=$(xh --auth-type bearer --auth ${GITHUB_TOKEN} get https://api.github.com/repos/Watfaq/clash-rs/releases/latest | gojq -r '.tag_name' | sed 's/^v//')
