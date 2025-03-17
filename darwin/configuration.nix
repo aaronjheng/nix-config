@@ -129,6 +129,7 @@
     trunk-io
     temporal-cli
     uv
+    uv-sort
     vault
     wget2
     xh
