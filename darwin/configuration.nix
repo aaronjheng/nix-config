@@ -127,6 +127,7 @@
     poppler-utils
     postgresql
     trunk-io
+    teleport
     temporal-cli
     uv
     uv-sort
