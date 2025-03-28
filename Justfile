@@ -30,7 +30,7 @@ confirm-darwin-variant:
 setup-darwin: show-darwin-variant
     #!/usr/bin/env bash
     sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
-    sudo nix-channel --add https://github.com/LnL7/nix-darwin/archive/master.tar.gz darwin
+    sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
     sudo nix-channel --update
 
     sudo cp -r darwin/ /etc/nix-darwin
