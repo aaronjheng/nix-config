@@ -126,6 +126,7 @@
     pnpm_9
     poppler-utils
     postgresql
+    ruff
     trunk-io
     teleport
     temporal-cli
