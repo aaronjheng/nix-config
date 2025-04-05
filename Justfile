@@ -29,6 +29,7 @@ confirm-darwin-variant:
 [macos]
 setup-darwin: show-darwin-variant
     #!/usr/bin/env bash
+    variant="{{ env('DARWIN_VARIANT') }}"
     sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
     sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
     sudo nix-channel --update

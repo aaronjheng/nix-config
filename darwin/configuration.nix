@@ -74,19 +74,21 @@
     caskArgs.no_quarantine = true;
     casks = [
       "appcleaner"
-      "obsidian"
-      "typora"
-      "openvpn-connect"
+      "chatgpt"
       "figma"
-      "pictogram"
-      "visual-studio-code"
       "ghostty"
-      "postman"
-      "wireshark"
       "iina"
-      "raycast"
       "keka"
+      "obsidian"
+      "openvpn-connect"
+      "pictogram"
+      "postman"
+      "raycast"
       "rectangle"
+      "typora"
+      "utm"
+      "visual-studio-code"
+      "wireshark"
     ];
   };
 
