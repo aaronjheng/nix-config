@@ -48,9 +48,6 @@ Defaults:%admin env_keep += "HTTP_PROXY HTTPS_PROXY ALL_PROXY NO_PROXY"
 Defaults:%admin env_keep += "http_proxy https_proxy all_proxy no_proxy"
 ADMIN
 
-# PATH
-export PATH="${PROJECT_ROOT}/bootstrap:${PATH}"
-
 # Google Chrome
 hdiutil attach google-chrome.dmg
 
@@ -61,14 +58,8 @@ hdiutil detach /Volumes/Google\ Chrome
 # Xcode Command Line Tools
 xcode-select --install
 
-# GnuPG keys
-gpg --import gnupg-public-keys.asc
-gpg --import gnupg-private-keys.asc
-gpg -K
-gpg -k
-gpg --import-ownertrust gnupg-ownertrust
-
 # SSH keys
+mkdir -p ~/.ssh
 cp -f id_ed25519.pub ~/.ssh/
 cp -f id_ed25519 ~/.ssh/
 
@@ -92,5 +83,12 @@ just setup-darwin
 popd 1>/dev/null
 
 sudo rm -rf /etc/sudoers.d/admin
+
+# GnuPG keys
+gpg --import bootstrap/gnupg-public-keys.asc
+gpg --import bootstrap/gnupg-private-keys.asc
+gpg -K
+gpg -k
+gpg --import-ownertrust bootstrap/gnupg-ownertrust
 
 popd 1>/dev/null
