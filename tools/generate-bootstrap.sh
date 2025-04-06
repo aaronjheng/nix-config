@@ -19,6 +19,8 @@ readonly chezmoi_version clash_version just_version
 
 wget2 -O chezmoi "https://github.com/twpayne/chezmoi/releases/download/v${chezmoi_version}/chezmoi-darwin-arm64"
 
+chmod +x chemoi
+
 wget2 -O clash "https://github.com/Watfaq/clash-rs/releases/download/v${clash_version}/clash-aarch64-apple-darwin"
 
 curl -L "https://github.com/casey/just/releases/download/${just_version}/just-${just_version}-aarch64-apple-darwin.tar.gz" | tar -xz
