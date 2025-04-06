@@ -36,6 +36,7 @@ system_proxy_setup
 
 export NIXPKGS_ALLOW_INSECURE=1
 export NIXPKGS_ALLOW_UNFREE=1
+export PATH="${PROJECT_ROOT}/bootstrap:${PATH}"
 
 # Checks
 just confirm-darwin-variant
