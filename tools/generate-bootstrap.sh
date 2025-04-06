@@ -32,13 +32,10 @@ cp -f ~/.config/chezmoi/chezmoi.toml chezmoi.toml
 
 # GnuPG
 gpg -a --export >gnupg-public-keys.asc
-
 gpg -a --export-secret-keys >gnupg-private-keys.asc
-
 gpg --export-ownertrust >gnupg-ownertrust
 
 # SSH
-
 cp ~/.ssh/id_ed25519.pub .
 cp ~/.ssh/id_ed25519 .
 
