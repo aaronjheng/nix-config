@@ -110,6 +110,7 @@
     dust
     duf
     fd
+    ffmpeg_6
     gh
     go
     gojq
