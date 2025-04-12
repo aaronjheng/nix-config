@@ -8,7 +8,7 @@ cli:
 plugins:
   sources:
     - id: trunk
-      ref: v1.6.7
+      ref: v1.6.8
       uri: https://github.com/trunk-io/plugins
 
 # Many linters and tools depend on runtimes - configure them here. (https://docs.trunk.io/runtimes)
@@ -28,10 +28,10 @@ lint:
     - markdownlint
     - nixpkgs-fmt
     - prettier
+    - shellcheck
     - trufflehog
     - yamllint
   enabled:
-    - shellcheck@0.10.0
     - shfmt@3.6.0
   ignore:
     - linters: [ALL]
