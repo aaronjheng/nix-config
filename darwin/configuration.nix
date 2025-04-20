@@ -74,7 +74,6 @@
     caskArgs.no_quarantine = true;
     casks = [
       "appcleaner"
-      "chatgpt"
       "figma"
       "ghostty"
       "iina"
