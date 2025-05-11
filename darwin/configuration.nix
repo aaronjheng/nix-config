@@ -75,7 +75,6 @@
     casks = [
       "appcleaner"
       "cursor"
-      "figma"
       "ghostty"
       "iina"
       "keka"
