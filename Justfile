@@ -45,7 +45,7 @@ rebuild-darwin: show-darwin-variant
     #!/usr/bin/env bash
     variant="{{ env('DARWIN_VARIANT') }}"
     sudo cp -r darwin/ /etc/nix-darwin
-    darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix -I darwin-variant=/etc/nix-darwin/variant/${variant}.nix
+    sudo darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix -I darwin-variant=/etc/nix-darwin/variant/${variant}.nix
 
 [macos]
 update-darwin:
