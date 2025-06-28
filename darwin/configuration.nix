@@ -110,6 +110,7 @@
     duf
     fd
     ffmpeg_6
+    gemini-cli
     gh
     go
     gojq
