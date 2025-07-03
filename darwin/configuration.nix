@@ -85,6 +85,7 @@
     clash-rs
     claude-code
     codex
+    container
     cue
     dust
     duf
