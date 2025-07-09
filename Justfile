@@ -34,7 +34,7 @@ setup-darwin: show-darwin-variant
     sudo nix-channel --add https://github.com/nix-darwin/nix-darwin/archive/master.tar.gz darwin
     sudo nix-channel --update
 
-    sudo cp -r darwin/ /etc/nix-darwin
+    sudo cp -r darwin/* /etc/nix-darwin
 
     nix-build '<darwin>' -A darwin-rebuild
     ./result/bin/darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix -I darwin-variant=/etc/nix-darwin/variant/${variant}.nix
@@ -44,7 +44,7 @@ setup-darwin: show-darwin-variant
 rebuild-darwin: show-darwin-variant
     #!/usr/bin/env bash
     variant="{{ env('DARWIN_VARIANT') }}"
-    sudo cp -r darwin/ /etc/nix-darwin
+    sudo cp -r darwin/* /etc/nix-darwin
     sudo darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix -I darwin-variant=/etc/nix-darwin/variant/${variant}.nix
 
 [macos]

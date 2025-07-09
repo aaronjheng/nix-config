@@ -112,7 +112,7 @@
     postgresql
     ruff
     trunk-io
-    teleport
+    # teleport
     temporal-cli
     uv
     vault
