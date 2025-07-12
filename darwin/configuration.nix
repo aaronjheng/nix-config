@@ -82,7 +82,8 @@
     btop
     buf
     chezmoi
-    clash-rs
+    # clash-rs
+    (callPackage ./pkg/clash-rs { })
     claude-code
     codex
     container
