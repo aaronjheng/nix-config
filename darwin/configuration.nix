@@ -113,11 +113,12 @@
     postgresql
     ruff
     trunk-io
-    # teleport
+    teleport
     temporal-cli
     uv
     vault
     wget2
+    wire
     xh
     zig
     zig-shell-completions
