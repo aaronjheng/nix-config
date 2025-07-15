@@ -74,6 +74,7 @@
   ];
 
   users.users.aaron.packages = with pkgs; [
+    _7zz
     atuin
     awscli2
     bat
