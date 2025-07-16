@@ -103,7 +103,7 @@
     k6
     kubectl
     mitmproxy
-    mysql-shell
+    # mysql-shell
     nix-update
     nixd
     nixfmt-rfc-style
