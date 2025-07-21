@@ -106,7 +106,7 @@
     # mysql-shell
     nix-update
     nixd
-    nixfmt-rfc-style
+    nixfmt
     nixpkgs-review
     oath-toolkit
     pnpm_9
