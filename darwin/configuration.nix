@@ -132,6 +132,7 @@
     caskArgs.no_quarantine = true;
     casks = [
       "appcleaner"
+      "beekeeper-studio"
       "cursor"
       "ghostty"
       "iina"
