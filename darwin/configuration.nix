@@ -146,7 +146,7 @@
       "typora"
       "utm"
       "visual-studio-code"
-      "wireshark"
+      "wireshark-app"
     ];
   };
 }
