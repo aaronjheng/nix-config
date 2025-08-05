@@ -118,7 +118,6 @@
     temporal-cli
     uv
     vault
-    wget2
     wire
     xh
     zig
