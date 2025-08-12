@@ -113,6 +113,7 @@
     poppler-utils
     postgresql
     ruff
+    socat
     trunk-io
     teleport
     temporal-cli
