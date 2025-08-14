@@ -41,20 +41,26 @@ setup-darwin: show-darwin-variant
     rm -rf ./result
 
 [macos]
-rebuild-darwin: show-darwin-variant
+rebuild: show-darwin-variant
     #!/usr/bin/env bash
     variant="{{ env('DARWIN_VARIANT') }}"
     sudo cp -r darwin/* /etc/nix-darwin
     sudo darwin-rebuild switch -I darwin-config=/etc/nix-darwin/configuration.nix -I darwin-variant=/etc/nix-darwin/variant/${variant}.nix
 
-[macos]
-update-darwin:
+[linux]
+rebuild:
+    nixos-rebuild switch --use-remote-sudo
+
+update:
     sudo nix-channel --update
 
 [macos]
-upgrade-darwin: update-darwin rebuild-darwin
+upgrade: update rebuild
     brew update
     brew upgrade
+
+[linux]
+upgrade: update rebuild
 
 [macos]
 uninstall-darwin:
