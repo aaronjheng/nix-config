@@ -95,7 +95,7 @@
     ffmpeg_6
     gemini-cli
     gh
-    go
+    go_latest
     gojq
     golangci-lint
     goreman
