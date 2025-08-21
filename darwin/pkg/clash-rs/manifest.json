@@ -1,9 +1,0 @@
-{
-  "version": "0.8.2",
-  "assets": {
-    "aarch64-darwin": {
-      "url": "https://github.com/Watfaq/clash-rs/releases/download/v0.8.2/clash-aarch64-apple-darwin",
-      "hash": "sha256-o2i3CitjmHA1h5zwFz9VdDW6xhvksBg3EQx1d1m1p28="
-    }
-  }
-}
