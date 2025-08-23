@@ -92,7 +92,7 @@
     dust
     duf
     fd
-    ffmpeg_6
+    ffmpeg
     gemini-cli
     gh
     go_latest
