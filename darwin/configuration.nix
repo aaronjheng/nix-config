@@ -85,7 +85,7 @@
     buf
     chezmoi
     clash-rs
-    claude-code
+    # claude-code
     codex
     container
     cue
@@ -102,7 +102,7 @@
     just
     k6
     kubectl
-    mitmproxy
+    # mitmproxy
     (mysql-shell.override {
       protobuf = protobuf_25.override {
         abseil-cpp = abseil-cpp_202407;
@@ -123,7 +123,6 @@
     teleport
     temporal-cli
     uv
-    vault
     wire
     xh
     zig
