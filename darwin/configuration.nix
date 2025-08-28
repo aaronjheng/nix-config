@@ -103,11 +103,7 @@
     k6
     kubectl
     # mitmproxy
-    (mysql-shell.override {
-      protobuf = protobuf_25.override {
-        abseil-cpp = abseil-cpp_202407;
-      };
-    })
+    mysql-shell
     nmap
     nix-update
     nixd
