@@ -85,7 +85,7 @@
     buf
     chezmoi
     clash-rs
-    # claude-code
+    claude-code
     codex
     container
     cue
