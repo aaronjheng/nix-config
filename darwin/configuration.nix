@@ -102,7 +102,7 @@
     just
     k6
     kubectl
-    # mitmproxy
+    mitmproxy
     mysql-shell
     nmap
     nix-update
