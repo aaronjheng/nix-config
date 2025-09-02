@@ -124,6 +124,7 @@
     zig
     zig-shell-completions
     zls
+    zon2nix
     zoxide
   ];
 
