@@ -86,7 +86,6 @@
     chezmoi
     clash-rs
     claude-code
-    cmake
     codex
     container
     cue
@@ -115,7 +114,6 @@
     pnpm_9
     poppler-utils
     postgresql
-    pkg-config-unwrapped
     ruff
     socat
     trunk-io
