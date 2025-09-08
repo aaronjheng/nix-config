@@ -90,6 +90,7 @@
     codex
     container
     cue
+    cursor-cli
     dust
     duf
     fd
