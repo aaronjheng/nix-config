@@ -76,6 +76,7 @@
 
   users.users.aaron.packages = with pkgs; [
     _7zz
+    amp-cli
     atuin
     awscli2
     bat
@@ -119,8 +120,7 @@
     trunk-io
     teleport
     temporal-cli
-    # uv
-    (callPackage ./pkg/uv { })
+    uv
     wire
     xh
     zig
