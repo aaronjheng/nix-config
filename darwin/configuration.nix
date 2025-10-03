@@ -29,7 +29,6 @@
 
   fonts.packages = with pkgs; [
     (callPackage ./pkg/lucida-console { })
-    # vista-fonts
     (callPackage ./pkg/vista-fonts { })
   ];
 
