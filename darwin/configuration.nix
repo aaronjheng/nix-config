@@ -96,6 +96,7 @@
     ffmpeg
     gemini-cli
     gh
+    github-copilot-cli
     go
     gojq
     golangci-lint
@@ -140,7 +141,6 @@
       "keka"
       "obsidian"
       "openvpn-connect"
-      "pictogram"
       "postman"
       "raycast"
       "rectangle"
