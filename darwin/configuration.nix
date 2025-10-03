@@ -110,7 +110,6 @@
     nix-update
     nixd
     nixfmt
-    nixpkgs-review
     oath-toolkit
     pnpm_9
     poppler-utils
