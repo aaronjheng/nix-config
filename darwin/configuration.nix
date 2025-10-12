@@ -77,7 +77,7 @@
     _7zz
     amp-cli
     atuin
-    #awscli2
+    awscli2
     bat
     bind
     broot
