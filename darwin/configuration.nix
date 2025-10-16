@@ -83,6 +83,7 @@
     broot
     btop
     buf
+    cascadia-code
     chezmoi
     clash-rs
     claude-code
