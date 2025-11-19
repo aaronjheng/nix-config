@@ -106,7 +106,7 @@
     k6
     kubectl
     mitmproxy
-    # mysql-shell
+    mysql-shell
     nmap
     nix-update
     nixd
