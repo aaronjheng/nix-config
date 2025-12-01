@@ -49,7 +49,7 @@ rebuild: show-darwin-variant
 
 [linux]
 rebuild:
-    nixos-rebuild switch --use-remote-sudo
+    nixos-rebuild switch --sudo
 
 update:
     sudo nix-channel --update
