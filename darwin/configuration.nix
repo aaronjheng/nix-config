@@ -135,7 +135,7 @@
       "appcleaner"
       "beekeeper-studio"
       "cursor"
-      "ghostty"
+      "ghostty@tip"
       "iina"
       "keka"
       "obsidian"
