@@ -115,6 +115,7 @@
     pnpm_9
     poppler-utils
     postgresql
+    python3Packages.ipython
     ruff
     socat
     teleport
