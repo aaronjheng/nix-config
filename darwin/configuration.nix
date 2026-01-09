@@ -112,7 +112,6 @@
     nixfmt
     oath-toolkit
     pnpm_9
-    poppler-utils
     postgresql
     python3Packages.ipython
     ruff
