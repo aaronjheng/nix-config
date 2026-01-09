@@ -28,7 +28,6 @@
   '';
 
   fonts.packages = with pkgs; [
-    (callPackage ./pkg/lucida-console { })
     (callPackage ./pkg/vista-fonts { })
   ];
 
