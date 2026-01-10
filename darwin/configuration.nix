@@ -122,6 +122,7 @@
     xh
     zig
     zig-shell-completions
+    (callPackage ./pkg/zoreman { })
     zon2nix
     zoxide
   ];
