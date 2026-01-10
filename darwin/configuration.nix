@@ -141,6 +141,7 @@
       "postman"
       "raycast"
       "rectangle"
+      "redis-insight"
       "typora"
       "utm"
       "visual-studio-code"
