@@ -140,6 +140,7 @@
       "obsidian"
       "openvpn-connect"
       "postman"
+      "ppsspp-emulator"
       "raycast"
       "rectangle"
       "redis-insight"
