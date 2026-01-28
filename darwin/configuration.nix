@@ -51,10 +51,6 @@
     zsh-autosuggestions
   ];
 
-  environment.profiles = [
-    "$HOME/.local/state/nix/profile"
-  ];
-
   programs.zsh = {
     enable = true;
     enableCompletion = true;
