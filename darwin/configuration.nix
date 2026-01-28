@@ -89,17 +89,20 @@
     container
     cue
     cursor-cli
+    duckdb
     dust
     duf
     fd
     ffmpeg
     gemini-cli
     gh
+    ghostscript
     github-copilot-cli
     go
     gojq
     golangci-lint
     goreman
+    imagemagick
     just
     k6
     kubectl
