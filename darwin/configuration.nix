@@ -29,6 +29,7 @@
 
   fonts.packages = with pkgs; [
     (callPackage ./pkg/vista-fonts { })
+    noto-fonts-cjk-sans
   ];
 
   environment.shells = with pkgs; [
