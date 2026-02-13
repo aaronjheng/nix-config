@@ -32,6 +32,14 @@
     noto-fonts-cjk-sans
   ];
 
+  environment.etc = {
+    "resolver/stg.g123.jp.private".text = ''
+      domain stg.g123.jp.private
+      search stg.g123.jp.private
+      nameserver 10.0.0.2
+    '';
+  };
+
   environment.shells = with pkgs; [
     zsh
   ];
