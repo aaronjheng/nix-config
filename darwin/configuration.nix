@@ -94,6 +94,7 @@
     container
     cue
     cursor-cli
+    diffoscope
     duckdb
     dust
     duf
@@ -111,7 +112,7 @@
     just
     k6
     kubectl
-    mitmproxy
+    # mitmproxy
     mysql-shell
     nmap
     nix-update
