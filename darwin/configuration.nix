@@ -127,6 +127,7 @@
     teleport
     temporal-cli
     uv
+    viu
     wire
     xh
     zig
