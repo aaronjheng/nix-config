@@ -143,7 +143,6 @@
     casks = [
       "appcleaner"
       "beekeeper-studio"
-      "cursor"
       # "ghostty"
       "iina"
       "keka"
