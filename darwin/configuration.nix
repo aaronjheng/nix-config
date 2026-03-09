@@ -109,6 +109,7 @@
     golangci-lint
     goreman
     imagemagick
+    jujutsu
     just
     just-lsp
     k6
