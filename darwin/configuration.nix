@@ -110,6 +110,7 @@
     goreman
     imagemagick
     just
+    just-lsp
     k6
     kubectl
     mitmproxy
@@ -126,6 +127,7 @@
     socat
     teleport
     temporal-cli
+    unar
     uv
     viu
     wire
