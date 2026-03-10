@@ -146,7 +146,7 @@
     casks = [
       "appcleaner"
       "beekeeper-studio"
-      # "ghostty"
+      "ghostty"
       "iina"
       "keka"
       "obsidian"
