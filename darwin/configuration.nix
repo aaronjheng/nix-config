@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 
@@ -16,6 +17,10 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    allowInsecurePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "openclaw"
+      ];
   };
 
   security.sudo.extraConfig = ''
@@ -121,6 +126,7 @@
     nixd
     nixfmt
     oath-toolkit
+    openclaw
     pnpm_9
     postgresql
     python3Packages.ipython
