@@ -17,7 +17,8 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    allowInsecurePredicate = pkg:
+    allowInsecurePredicate =
+      pkg:
       builtins.elem (lib.getName pkg) [
         "openclaw"
       ];
@@ -31,11 +32,6 @@
     Defaults:%admin env_keep += "EDITOR VISUAL"
     Defaults:%admin env_keep += "TERMINFO TERMINFO_DIRS"
   '';
-
-  fonts.packages = with pkgs; [
-    (callPackage ./pkg/vista-fonts { })
-    noto-fonts-cjk-sans
-  ];
 
   environment.etc = {
     "resolver/stg.g123.jp.private".text = ''
@@ -64,6 +60,28 @@
     zsh-completions
     zsh-autosuggestions
   ];
+
+  fonts.packages = with pkgs; [
+    (callPackage ./pkg/vista-fonts { })
+    noto-fonts-cjk-sans
+  ];
+
+  launchd.daemons.nix-collect-garbage = {
+    serviceConfig = {
+      ProgramArguments = [
+        "/nix/var/nix/profiles/default/bin/nix-collect-garbage"
+        "-d"
+      ];
+
+      StartCalendarInterval = {
+        Hour = 0;
+        Minute = 1;
+      };
+
+      StandardOutPath = "/var/log/nix-collect-garbage.log";
+      StandardErrorPath = "/var/log/nix-collect-garbage.log";
+    };
+  };
 
   programs.zsh = {
     enable = true;
