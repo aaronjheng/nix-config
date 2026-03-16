@@ -70,7 +70,8 @@
     serviceConfig = {
       ProgramArguments = [
         "/nix/var/nix/profiles/default/bin/nix-collect-garbage"
-        "-d"
+        "--delete-older-than"
+        "3d"
       ];
 
       StartCalendarInterval = {
