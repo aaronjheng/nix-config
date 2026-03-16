@@ -148,6 +148,7 @@
     openclaw
     pnpm_9
     postgresql
+    python3
     python3Packages.ipython
     ruff
     socat
