@@ -118,7 +118,7 @@
     container
     cue
     cursor-cli
-    diffoscope
+    # diffoscope
     duckdb
     dust
     duf
@@ -138,6 +138,7 @@
     just-lsp
     k6
     kubectl
+    kubectl-ktop
     mitmproxy
     mysql-shell
     nmap
