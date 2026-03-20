@@ -62,7 +62,6 @@
 
   fonts.packages = with pkgs; [
     (callPackage ./pkg/vista-fonts { })
-    noto-fonts-cjk-sans
   ];
 
   launchd.daemons.nix-collect-garbage = {
