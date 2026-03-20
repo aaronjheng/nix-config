@@ -58,7 +58,6 @@
     tmux
     vim
     zsh-completions
-    zsh-autosuggestions
   ];
 
   fonts.packages = with pkgs; [
