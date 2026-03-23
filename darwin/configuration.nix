@@ -143,6 +143,7 @@
     nixfmt
     oath-toolkit
     openclaw
+    pi-coding-agent
     pnpm_9
     postgresql
     python3
