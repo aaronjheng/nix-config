@@ -112,6 +112,7 @@
     claude-code
     codex
     container
+    crush
     cue
     cursor-cli
     # diffoscope
