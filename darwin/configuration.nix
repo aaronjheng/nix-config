@@ -100,6 +100,25 @@
     };
   };
 
+  launchd.user.agents.brew-cleanup = {
+    serviceConfig = {
+      ProgramArguments = [
+        "/opt/homebrew/bin/brew"
+        "cleanup"
+        "--prune"
+        "all"
+      ];
+
+      StartCalendarInterval = {
+        Hour = 0;
+        Minute = 1;
+      };
+
+      StandardOutPath = "/var/log/brew-cleanup.log";
+      StandardErrorPath = "/var/log/brew-cleanup.log";
+    };
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
