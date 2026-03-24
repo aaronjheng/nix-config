@@ -82,6 +82,24 @@
     };
   };
 
+  launchd.user.agents.chezmoi-update = {
+    serviceConfig = {
+      ProgramArguments = [
+        "/etc/profiles/per-user/aaron/bin/chezmoi"
+        "update"
+        "--apply"
+      ];
+
+      StartCalendarInterval = {
+        Hour = 0;
+        Minute = 1;
+      };
+
+      StandardOutPath = "/var/log/chezmoi-update.log";
+      StandardErrorPath = "/var/log/chezmoi-update.log";
+    };
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
