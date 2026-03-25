@@ -182,7 +182,6 @@
     oath-toolkit
     openclaw
     opencode
-    pi-coding-agent
     pnpm_9
     postgresql
     python3
