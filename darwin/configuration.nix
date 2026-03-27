@@ -161,7 +161,6 @@
     gemini-cli
     gh
     ghostscript
-    github-copilot-cli
     go
     gojq
     golangci-lint
