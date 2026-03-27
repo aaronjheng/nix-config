@@ -54,13 +54,16 @@ rebuild:
 update:
     sudo nix-channel --update
 
+rebuild-dotfiles:
+    chezmoi update --apply
+
 [macos]
-upgrade: update rebuild
+upgrade: update rebuild rebuild-dotfiles
     brew update
     brew upgrade
 
 [linux]
-upgrade: update rebuild
+upgrade: update rebuild rebuild-dotfiles
 
 [macos]
 uninstall-darwin:
