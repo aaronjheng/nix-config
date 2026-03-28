@@ -201,27 +201,4 @@
     zon2nix
     zoxide
   ];
-
-  homebrew = {
-    enable = true;
-    caskArgs.no_quarantine = true;
-    casks = [
-      "appcleaner"
-      "beekeeper-studio"
-      "ghostty"
-      "iina"
-      "keka"
-      "obsidian"
-      "openvpn-connect"
-      "postman"
-      "ppsspp-emulator"
-      "raycast"
-      "rectangle"
-      "redis-insight"
-      "typora"
-      "utm"
-      "visual-studio-code"
-      "wireshark-app"
-    ];
-  };
 }
