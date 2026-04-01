@@ -187,6 +187,8 @@
     python3Packages.ipython
     ruff
     socat
+    swift-format
+    swiftlint
     teleport
     temporal-cli
     typescript-language-server
