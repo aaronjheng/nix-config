@@ -179,7 +179,6 @@
     nixd
     nixfmt
     oath-toolkit
-    openclaw
     opencode
     pnpm_9
     postgresql
