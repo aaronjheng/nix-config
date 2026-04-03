@@ -194,7 +194,6 @@
     unar
     uv
     viu
-    wire
     xh
     zig
     zig-shell-completions
