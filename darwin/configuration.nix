@@ -152,7 +152,7 @@
     crush
     cue
     cursor-cli
-    # diffoscope
+    diffoscope
     duckdb
     dust
     duf
