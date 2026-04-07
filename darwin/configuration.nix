@@ -4,6 +4,13 @@
   ...
 }:
 
+let
+  swiftlintWrapped = pkgs.writeShellScriptBin "swiftlint" ''
+    export TOOLCHAIN_DIR=/Library/Developer/CommandLineTools
+    exec ${pkgs.swiftlint}/bin/swiftlint "$@"
+  '';
+in
+
 {
   imports = [
     <darwin-variant>
@@ -187,7 +194,7 @@
     ruff
     socat
     swift-format
-    swiftlint
+    swiftlintWrapped
     teleport
     temporal-cli
     typescript-language-server
