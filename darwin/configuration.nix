@@ -192,6 +192,7 @@ in
     python3
     python3Packages.ipython
     ruff
+    skills
     socat
     swift-format
     swiftlintWrapped
