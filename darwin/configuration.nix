@@ -170,6 +170,7 @@ in
     gemini-cli
     gh
     ghostscript
+    glow
     go
     gojq
     golangci-lint
