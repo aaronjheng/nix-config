@@ -194,6 +194,7 @@ in
     postgresql
     python3
     python3Packages.ipython
+    rtk
     ruff
     skills
     socat
