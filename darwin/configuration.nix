@@ -143,7 +143,6 @@ in
 
   users.users.aaron.packages = with pkgs; [
     _7zz
-    amp-cli
     atuin
     awscli2
     bat
