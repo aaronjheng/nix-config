@@ -4,13 +4,6 @@
   ...
 }:
 
-let
-  swiftlintWrapped = pkgs.writeShellScriptBin "swiftlint" ''
-    export TOOLCHAIN_DIR=/Library/Developer/CommandLineTools
-    exec ${pkgs.swiftlint}/bin/swiftlint "$@"
-  '';
-in
-
 {
   imports = [
     <darwin-variant>
@@ -196,7 +189,7 @@ in
     skills
     socat
     swift-format
-    swiftlintWrapped
+    swiftlint
     teleport
     temporal-cli
     unar
