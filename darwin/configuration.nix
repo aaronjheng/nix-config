@@ -151,9 +151,7 @@ in
     btop
     buf
     chezmoi
-    (pkgs.clash-rs.overrideAttrs (oldAttrs: {
-      patches = (oldAttrs.patches or [ ]) ++ [ ./pkg/clash-rs/fix-compatibility-mode.patch ];
-    }))
+    clash-rs
     claude-code
     codex
     container
