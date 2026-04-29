@@ -148,7 +148,6 @@
     claude-code
     codex
     container
-    crush
     cue
     cursor-cli
     diffoscope
@@ -164,6 +163,7 @@
     go
     gojq
     golangci-lint
+    gopls
     goreman
     imagemagick
     jujutsu
@@ -192,6 +192,7 @@
     swiftlint
     teleport
     temporal-cli
+    typescript-language-server
     unar
     uv
     viu
