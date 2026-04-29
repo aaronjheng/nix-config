@@ -198,6 +198,7 @@
     viu
     xh
     zig
+    zls
     zig-shell-completions
     (callPackage ./pkg/zoreman { })
     zon2nix
