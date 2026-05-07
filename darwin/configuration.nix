@@ -171,9 +171,8 @@
     just-lsp
     k6
     kubectl
-    kubectl-ktop
     mitmproxy
-    mysql-shell
+    mysql-shell_8
     nmap
     nix-update
     nixd
