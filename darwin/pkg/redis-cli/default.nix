@@ -11,11 +11,11 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "4a1c687a6c11937f0ac5e3d55246d48a10394d96";
-    hash = "sha256-sYKLybovH+iZbLxBah+hC5cAYQvoQ7NgnQJ9So+gKSA=";
+    rev = "55e86d816cdf93d597de81579e3700b11b7cb4bc";
+    hash = "sha256-Lum2d6PigWcZnuLvzERiNy8S/hNmvEQxt8s7N6T8W9o=";
   };
 
-  vendorHash = "sha256-fQXCkjAw2vs4dXOofTD9jweXmVsMhvNVslMjmDeC+Pg=";
+  vendorHash = "sha256-PNG2938psiw6NCWvS3h1iuQLVEHLztosWOYPKFzRQ8k=";
 
   ldflags = [
     "-s"
