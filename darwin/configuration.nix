@@ -170,6 +170,7 @@
     just
     just-lsp
     k6
+    (callPackage ./pkg/kafka-cli { })
     kubectl
     mitmproxy
     mysql-shell_8
