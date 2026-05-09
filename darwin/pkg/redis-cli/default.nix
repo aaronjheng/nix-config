@@ -25,9 +25,7 @@ buildGoModule (finalAttrs: {
     homepage = "https://github.com/aaronjheng/redis-cli";
     description = "Redis command-line interface tool";
     license = lib.licenses.asl20;
-    maintainers = with lib.maintainers; [
-      aaronjheng
-    ];
+    maintainers = with lib.maintainers; [ aaronjheng ];
     mainProgram = "redis";
   };
 })

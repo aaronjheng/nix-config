@@ -42,9 +42,7 @@ buildGoModule (finalAttrs: {
     homepage = "https://github.com/aaronjheng/kafka-cli";
     description = "Lightweight command-line tool for managing Apache Kafka clusters";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [
-      aaronjheng
-    ];
+    maintainers = with lib.maintainers; [ aaronjheng ];
     mainProgram = "kafka";
   };
 })
