@@ -184,6 +184,7 @@
     postgresql
     python3
     python3Packages.ipython
+    (callPackage ./pkg/redis-cli { })
     rtk
     ruff
     skills
