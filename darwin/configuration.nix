@@ -61,7 +61,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    (callPackage ./pkg/vista-fonts { })
+    vista-fonts
   ];
 
   launchd.daemons.nix-collect-garbage = {
