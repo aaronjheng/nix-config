@@ -10,13 +10,13 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "zoreman";
-  version = "0.1.0";
+  version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "96dade2647359118cc995cfc974836db59bdd9cf";
-    hash = "sha256-sVXEzyDR1sZkAIGKYgCQbeMnQRREBx62NRBFTNF/5Cc=";
+    rev = "4933ee6472f463015fe856c82929fd95c50b3517";
+    hash = "sha256-12/UM1DhhmA5uOl7O+yQOoNl0qNTiWZHCPyoBxXKiZY=";
   };
 
   nativeBuildInputs = [
