@@ -33,7 +33,6 @@ stdenv.mkDerivation (finalAttrs: {
     homepage = "https://github.com/aaronjheng/zoreman";
     license = lib.licenses.bsd3;
     maintainers = with lib.maintainers; [ aaronjheng ];
-    platforms = lib.platforms.darwin;
     mainProgram = "zoreman";
   };
 })

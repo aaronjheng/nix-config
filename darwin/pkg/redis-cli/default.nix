@@ -24,7 +24,7 @@ buildGoModule (finalAttrs: {
   meta = {
     homepage = "https://github.com/aaronjheng/redis-cli";
     description = "Redis command-line interface tool";
-    license = lib.licenses.bsd3;
+    license = lib.licenses.asl20;
     maintainers = with lib.maintainers; [
       aaronjheng
     ];
