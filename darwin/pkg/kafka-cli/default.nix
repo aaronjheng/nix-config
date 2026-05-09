@@ -4,7 +4,6 @@
   buildGoModule,
   fetchFromGitHub,
   installShellFiles,
-  writableTmpDirAsHomeHook,
 }:
 
 buildGoModule (finalAttrs: {
@@ -26,7 +25,6 @@ buildGoModule (finalAttrs: {
 
   nativeBuildInputs = [
     installShellFiles
-    writableTmpDirAsHomeHook
   ];
 
   ldflags = [
