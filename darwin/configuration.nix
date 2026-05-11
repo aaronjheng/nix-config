@@ -144,14 +144,12 @@
     codex
     container
     cue
-    cursor-cli
     diffoscope
     duckdb
     dust
     duf
     fd
     ffmpeg
-    gemini-cli
     gh
     ghostscript
     glow
