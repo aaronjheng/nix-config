@@ -1,7 +1,9 @@
 {
   lib,
+  stdenv,
   buildGoModule,
   fetchFromGitHub,
+  installShellFiles,
 }:
 
 buildGoModule (finalAttrs: {
@@ -11,15 +13,26 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "55e86d816cdf93d597de81579e3700b11b7cb4bc";
-    hash = "sha256-Lum2d6PigWcZnuLvzERiNy8S/hNmvEQxt8s7N6T8W9o=";
+    rev = "e7ad5672f3bdbabe9168bcfd907d4288e144768d";
+    hash = "sha256-fcrcRWWBNQtYvvUDwfu3bY4TPfib6mAdwx0QmcJGQNs=";
   };
 
   vendorHash = "sha256-PNG2938psiw6NCWvS3h1iuQLVEHLztosWOYPKFzRQ8k=";
 
+  nativeBuildInputs = [
+    installShellFiles
+  ];
+
   ldflags = [
     "-s"
   ];
+
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd redis \
+      --bash <($out/bin/redis completion bash) \
+      --fish <($out/bin/redis completion fish) \
+      --zsh <($out/bin/redis completion zsh)
+  '';
 
   meta = {
     homepage = "https://github.com/aaronjheng/redis-cli";
