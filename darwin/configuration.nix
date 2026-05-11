@@ -140,7 +140,6 @@
     buf
     chezmoi
     clash-rs
-    claude-code
     codex
     container
     cue
