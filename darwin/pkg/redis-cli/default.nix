@@ -13,8 +13,8 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "e7ad5672f3bdbabe9168bcfd907d4288e144768d";
-    hash = "sha256-fcrcRWWBNQtYvvUDwfu3bY4TPfib6mAdwx0QmcJGQNs=";
+    rev = "b5119a6b9109d82d7b24a7ffc9a8800e329ee49b";
+    hash = "sha256-ZAxhf8JCJBFccoqg5S7c6qjx4IEM+m+mSNWzrjdA98A=";
   };
 
   vendorHash = "sha256-PNG2938psiw6NCWvS3h1iuQLVEHLztosWOYPKFzRQ8k=";
