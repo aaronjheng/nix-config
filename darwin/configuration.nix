@@ -77,40 +77,56 @@
     };
   };
 
-  launchd.user.agents.chezmoi-update = {
-    serviceConfig = {
-      ProgramArguments = [
-        "/etc/profiles/per-user/aaron/bin/chezmoi"
-        "update"
-        "--apply"
-      ];
+  launchd.user.agents = {
+    brew-cleanup = {
+      serviceConfig = {
+        ProgramArguments = [
+          "/opt/homebrew/bin/brew"
+          "cleanup"
+          "--prune"
+          "all"
+        ];
 
-      StartCalendarInterval = {
-        Hour = 0;
-        Minute = 1;
+        StartCalendarInterval = {
+          Hour = 0;
+          Minute = 1;
+        };
+
+        StandardOutPath = "/Users/aaron/Library/Logs/brew-cleanup.log";
+        StandardErrorPath = "/Users/aaron/Library/Logs/brew-cleanup.log";
       };
-
-      StandardOutPath = "/var/log/chezmoi-update.log";
-      StandardErrorPath = "/var/log/chezmoi-update.log";
     };
-  };
 
-  launchd.user.agents.brew-cleanup = {
-    serviceConfig = {
-      ProgramArguments = [
-        "/opt/homebrew/bin/brew"
-        "cleanup"
-        "--prune"
-        "all"
-      ];
+    chezmoi-update = {
+      serviceConfig = {
+        ProgramArguments = [
+          "/etc/profiles/per-user/aaron/bin/chezmoi"
+          "update"
+          "--apply"
+        ];
 
-      StartCalendarInterval = {
-        Hour = 0;
-        Minute = 1;
+        StartCalendarInterval = {
+          Hour = 0;
+          Minute = 1;
+        };
+
+        StandardOutPath = "/Users/aaron/Library/Logs/chezmoi-update.log";
+        StandardErrorPath = "/Users/aaron/Library/Logs/chezmoi-update.log";
       };
+    };
 
-      StandardOutPath = "/var/log/brew-cleanup.log";
-      StandardErrorPath = "/var/log/brew-cleanup.log";
+    ollama = {
+      serviceConfig = {
+        ProgramArguments = [
+          "/etc/profiles/per-user/aaron/bin/ollama"
+          "serve"
+        ];
+
+        RunAtLoad = true;
+
+        StandardOutPath = "/Users/aaron/Library/Logs/ollama.log";
+        StandardErrorPath = "/Users/aaron/Library/Logs/ollama.log";
+      };
     };
   };
 
@@ -171,6 +187,7 @@
     nixd
     nixfmt
     oath-toolkit
+    ollama
     opencode
     pnpm_9
     postgresql
