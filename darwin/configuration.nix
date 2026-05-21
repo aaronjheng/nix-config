@@ -165,6 +165,7 @@
     duf
     fd
     ffmpeg
+    (callPackage ./pkg/funda { })
     gh
     ghostscript
     glow
