@@ -182,7 +182,7 @@
     (callPackage ./pkg/kafka-cli { })
     kubectl
     mitmproxy
-    # mysql-shell_8
+    mysql-shell_8
     nmap
     nix-update
     nixd
