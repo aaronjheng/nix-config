@@ -155,7 +155,7 @@
     btop
     buf
     chezmoi
-    clash-rs
+    (callPackage ./pkg/clash-rs { })
     codex
     container
     cue
