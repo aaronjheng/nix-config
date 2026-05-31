@@ -159,6 +159,7 @@
     (callPackage ./pkg/clash-rs { })
     codex
     container
+    crush
     cue
     # diffoscope
     duckdb
