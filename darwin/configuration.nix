@@ -158,7 +158,7 @@
     chezmoi
     (callPackage ./pkg/clash-rs { })
     codex
-    container
+    # container
     crush
     cue
     # diffoscope
