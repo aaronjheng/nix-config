@@ -156,7 +156,7 @@
     btop
     buf
     chezmoi
-    (callPackage ./pkg/clash-rs { })
+    clash-rs
     codex
     # container
     crush
