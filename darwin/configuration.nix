@@ -115,6 +115,35 @@
       };
     };
 
+    clash = {
+      serviceConfig = {
+        LimitLoadToSessionType = [
+          "Aqua"
+          "Background"
+          "LoginWindow"
+          "StandardIO"
+          "System"
+        ];
+
+        SoftResourceLimits = {
+          NumberOfFiles = 65536;
+        };
+
+        ProgramArguments = [
+          "/etc/profiles/per-user/aaron/bin/clash"
+          "-f"
+          "/Users/aaron/.config/clash/config.yaml"
+          "-d"
+          "/Users/aaron/.local/state/clash"
+        ];
+
+        RunAtLoad = true;
+
+        StandardOutPath = "/Users/aaron/Library/Logs/clash.log";
+        StandardErrorPath = "/Users/aaron/Library/Logs/clash.log";
+      };
+    };
+
     ollama = {
       serviceConfig = {
         ProgramArguments = [
