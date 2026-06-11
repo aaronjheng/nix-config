@@ -221,7 +221,7 @@
     oath-toolkit
     ollama
     opencode
-    pnpm_9
+    pnpm_10
     postgresql
     python3
     python3Packages.ipython
