@@ -1,4 +1,4 @@
-set dotenv-load := true
+set dotenv-load
 
 install-nix:
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
@@ -60,7 +60,7 @@ rebuild-dotfiles:
 [macos]
 upgrade: update rebuild rebuild-dotfiles
     brew update
-    brew upgrade
+    brew upgrade -y
 
 [linux]
 upgrade: update rebuild rebuild-dotfiles
