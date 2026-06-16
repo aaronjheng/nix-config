@@ -2,11 +2,11 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  zig_0_15,
+  zig_0_16,
   testers,
 }:
 let
-  zig = zig_0_15;
+  zig = zig_0_16;
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "zoreman";
@@ -15,8 +15,8 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "4933ee6472f463015fe856c82929fd95c50b3517";
-    hash = "sha256-12/UM1DhhmA5uOl7O+yQOoNl0qNTiWZHCPyoBxXKiZY=";
+    rev = "4437406f9ef6d8170a29c7f96efe7bb20efc431c";
+    hash = "sha256-nitqkJWaoqaxDeIeHMtH8YarpmY8Fzemhlpyl0a7DW4=";
   };
 
   nativeBuildInputs = [
