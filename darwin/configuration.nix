@@ -210,7 +210,6 @@
     gojq
     golangci-lint
     gopls
-    goreman
     imagemagick
     jujutsu
     just
