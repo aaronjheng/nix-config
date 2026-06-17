@@ -2,6 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  callPackage,
   zig_0_16,
   testers,
 }:
@@ -15,9 +16,14 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "4437406f9ef6d8170a29c7f96efe7bb20efc431c";
-    hash = "sha256-nitqkJWaoqaxDeIeHMtH8YarpmY8Fzemhlpyl0a7DW4=";
+    rev = "3fd448ff797829f3ef4bd8c6e5a2d573e5e65a6e";
+    hash = "sha256-7aqd37Whl63AHiLFbxv2tk+C8NGsHn9KdQMTFS3irXo=";
   };
+
+  zigBuildFlags = [
+    "--system"
+    (callPackage ./deps.nix { })
+  ];
 
   nativeBuildInputs = [
     zig.hook
