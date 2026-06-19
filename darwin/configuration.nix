@@ -233,6 +233,7 @@
     postgresql
     python3
     python3Packages.ipython
+    ripgrep
     (callPackage ./pkg/redis-cli { })
     rtk
     ruff
