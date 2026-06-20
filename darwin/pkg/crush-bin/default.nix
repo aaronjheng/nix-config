@@ -9,11 +9,11 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "crush-bin";
-  version = "0.79.0";
+  version = "0.79.1";
 
   src = fetchurl {
     url = "https://github.com/charmbracelet/crush/releases/download/v${finalAttrs.version}/crush_${finalAttrs.version}_Darwin_arm64.tar.gz";
-    hash = "sha256-6PtCr+kyE7K7eQbyQF/e2htNpkYA65jcPnizLIF9zGY=";
+    hash = "sha256-hQp/r1WProRHGb+AdrFrECjOAUAIs4GwfVa1m5m6qzc=";
   };
 
   nativeBuildInputs = [
