@@ -198,7 +198,7 @@
     # container
     (callPackage ./pkg/crush-bin { })
     cue
-    # diffoscope
+    diffoscope
     duckdb
     dust
     duf
