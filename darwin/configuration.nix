@@ -17,6 +17,9 @@
 
   nixpkgs.config = {
     allowUnfree = true;
+    permittedInsecurePackages = [
+      "pnpm-10.29.2"
+    ];
   };
 
   security.sudo.extraConfig = ''
@@ -196,9 +199,9 @@
     clash-rs
     codex
     # container
-    (callPackage ./pkg/crush-bin { })
+    crush
     cue
-    diffoscope
+    # diffoscope
     duckdb
     dust
     duf
