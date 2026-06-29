@@ -138,8 +138,6 @@
           "/Users/aaron/.config/clash/config.yaml"
           "-d"
           "/Users/aaron/.local/state/clash"
-          "--compatibility"
-          "false"
         ];
 
         RunAtLoad = true;
