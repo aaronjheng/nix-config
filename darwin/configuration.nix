@@ -147,6 +147,31 @@
       };
     };
 
+    clipaste = {
+      serviceConfig = {
+        LimitLoadToSessionType = [
+          "Aqua"
+          "Background"
+          "LoginWindow"
+          "StandardIO"
+          "System"
+        ];
+
+        SoftResourceLimits = {
+          NumberOfFiles = 65536;
+        };
+
+        ProgramArguments = [
+          "/Users/aaron/.local/state/nix/profile/bin/clipaste"
+        ];
+
+        RunAtLoad = true;
+
+        StandardOutPath = "/Users/aaron/Library/Logs/clipaste.log";
+        StandardErrorPath = "/Users/aaron/Library/Logs/clipaste.log";
+      };
+    };
+
     ollama = {
       serviceConfig = {
         ProgramArguments = [
