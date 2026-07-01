@@ -199,7 +199,7 @@
     # container
     crush
     cue
-    # diffoscope
+    diffoscope
     duckdb
     dust
     duf
