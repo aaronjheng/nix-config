@@ -13,6 +13,9 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
 
+  documentation.enable = false;
+  system.tools.darwin-uninstaller.enable = false;
+
   nix.enable = false;
 
   nixpkgs.config = {
