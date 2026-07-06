@@ -268,7 +268,6 @@
     ruff
     skills
     socat
-    swift-format
     swiftlint
     teleport
     temporal-cli
