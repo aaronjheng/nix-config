@@ -266,6 +266,7 @@
     (callPackage ./pkg/redis-cli { })
     rtk
     ruff
+    rust-analyzer
     skills
     socat
     swiftlint
