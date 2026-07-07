@@ -225,7 +225,9 @@
     clash-rs
     codex
     # container
-    crush
+    (crush.overrideAttrs {
+      patches = [ ./patches/crush-hide-logo.patch ];
+    })
     cue
     diffoscope
     duckdb
