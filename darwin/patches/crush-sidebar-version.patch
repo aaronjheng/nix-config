@@ -1,0 +1,63 @@
+--- a/internal/ui/model/sidebar.go
++++ b/internal/ui/model/sidebar.go
+@@ -7,6 +7,7 @@
+ 
+ 	"charm.land/lipgloss/v2"
+ 	"github.com/charmbracelet/crush/internal/ui/common"
++	"github.com/charmbracelet/crush/internal/version"
+ 	uv "github.com/charmbracelet/ultraviolet"
+ 	"github.com/charmbracelet/ultraviolet/layout"
+ )
+@@ -157,7 +158,7 @@
+ 		layout.Len(lipgloss.Height(sidebarHeader)),
+ 		layout.Fill(1),
+ 	).Split(m.layout.sidebar).Assign(new(image.Rectangle), &remainingHeightArea)
+-	remainingHeight := remainingHeightArea.Dy() - 6
++	remainingHeight := remainingHeightArea.Dy() - 7
+ 	filesCount := 0
+ 	for _, f := range m.sessionFiles {
+ 		if f.Additions == 0 && f.Deletions == 0 {
+@@ -184,22 +185,30 @@
+ 	skillsSection := m.skillsInfo(width, maxSkills, true)
+ 	filesSection := m.filesInfo(m.com.Workspace.WorkingDir(), width, maxFiles, true)
+ 
++	sidebarContent := lipgloss.JoinVertical(
++		lipgloss.Left,
++		sidebarHeader,
++		filesSection,
++		"",
++		lspSection,
++		"",
++		mcpSection,
++		"",
++		skillsSection,
++	)
++
++	versionText := t.Sidebar.WorkingDir.Width(width).Render(fmt.Sprintf("Crush %s", version.Version))
++	versionArea := max(0, height-lipgloss.Height(sidebarContent))
++	sidebarContent = lipgloss.JoinVertical(
++		lipgloss.Left,
++		sidebarContent,
++		lipgloss.PlaceVertical(versionArea, lipgloss.Bottom, versionText),
++	)
++
+ 	uv.NewStyledString(
+ 		lipgloss.NewStyle().
+ 			MaxWidth(width).
+ 			MaxHeight(height).
+-			Render(
+-				lipgloss.JoinVertical(
+-					lipgloss.Left,
+-					sidebarHeader,
+-					filesSection,
+-					"",
+-					lspSection,
+-					"",
+-					mcpSection,
+-					"",
+-					skillsSection,
+-				),
+-			),
++			Render(sidebarContent),
+ 	).Draw(scr, area)
+ }

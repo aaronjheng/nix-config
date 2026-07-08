@@ -225,9 +225,20 @@
     clash-rs
     codex
     # container
-    (crush.overrideAttrs {
-      patches = [ ./patches/crush-hide-logo.patch ];
-    })
+    (crush.overrideAttrs (old: {
+      version = "0.82.0";
+      src = fetchFromGitHub {
+        owner = "charmbracelet";
+        repo = "crush";
+        tag = "v0.82.0";
+        hash = "sha256-m+4CQzKmQR8jRBLHHCcWpdtldwkwXr3IPfPG0P9q2MM=";
+      };
+      vendorHash = "sha256-4m/Bcf9gEk2cTPcdSIQan944Mihw+iV6CNvYc6UA0lY=";
+      patches = [
+        ./patches/crush-hide-logo.patch
+        ./patches/crush-sidebar-version.patch
+      ];
+    }))
     cue
     diffoscope
     duckdb
