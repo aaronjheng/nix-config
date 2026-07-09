@@ -300,25 +300,7 @@
     nixfmt
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
-    (opencode.overrideAttrs (old: {
-      version = "1.17.16";
-      src = fetchFromGitHub {
-        owner = "anomalyco";
-        repo = "opencode";
-        tag = "v1.17.16";
-        hash = "sha256-XbxPEA1UPBi/xctRJsNXi6bEGGPHX7VyWPB1K5DJJRA=";
-      };
-      node_modules = old.node_modules.overrideAttrs (_: {
-        version = "1.17.16";
-        src = fetchFromGitHub {
-          owner = "anomalyco";
-          repo = "opencode";
-          tag = "v1.17.16";
-          hash = "sha256-XbxPEA1UPBi/xctRJsNXi6bEGGPHX7VyWPB1K5DJJRA=";
-        };
-        outputHash = "sha256-htDj8yzC3sIHPFgUBKZJPgHhZ9ygDOr/mhoKCbYUJuU=";
-      });
-    }))
+    opencode
     pnpm_10
     postgresql
     python3
