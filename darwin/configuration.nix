@@ -224,27 +224,29 @@
     chezmoi
     clash-rs
     (callPackage ./pkg/clipaste { })
-    (let
-      newCodexSrc = fetchFromGitHub {
-        owner = "openai";
-        repo = "codex";
-        tag = "rust-v0.143.0";
-        hash = "sha256-4xJcE8/lFwp1r/J8z7HMb7A59WXkj3rtm9QDtjJfC04=";
-      };
-      newCodexDeps = rustPlatform.fetchCargoVendor {
-        pname = "codex";
+    (
+      let
+        newCodexSrc = fetchFromGitHub {
+          owner = "openai";
+          repo = "codex";
+          tag = "rust-v0.143.0";
+          hash = "sha256-4xJcE8/lFwp1r/J8z7HMb7A59WXkj3rtm9QDtjJfC04=";
+        };
+        newCodexDeps = rustPlatform.fetchCargoVendor {
+          pname = "codex";
+          version = "0.143.0";
+          src = newCodexSrc;
+          sourceRoot = "source/codex-rs";
+          hash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
+        };
+      in
+      codex.overrideAttrs (old: {
         version = "0.143.0";
         src = newCodexSrc;
-        sourceRoot = "source/codex-rs";
-        hash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
-      };
-    in
-    codex.overrideAttrs (old: {
-      version = "0.143.0";
-      src = newCodexSrc;
-      cargoHash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
-      cargoDeps = newCodexDeps;
-    }))
+        cargoHash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
+        cargoDeps = newCodexDeps;
+      })
+    )
     # container
     (crush.overrideAttrs (old: {
       version = "0.83.0";
@@ -281,6 +283,7 @@
     gojq
     golangci-lint
     gopls
+    grok-build
     (callPackage ./pkg/hunk { })
     imagemagick
     jujutsu
