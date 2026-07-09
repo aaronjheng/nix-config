@@ -165,7 +165,7 @@
         };
 
         ProgramArguments = [
-          "/Users/aaron/.local/state/nix/profile/bin/clipaste"
+          "/etc/profiles/per-user/aaron/bin/clipaste"
         ];
 
         RunAtLoad = true;
@@ -223,21 +223,26 @@
     charm-freeze
     chezmoi
     clash-rs
+    (callPackage ./pkg/clipaste { })
     codex
     # container
     (crush.overrideAttrs (old: {
-      version = "0.82.0";
+      version = "0.83.0";
       src = fetchFromGitHub {
         owner = "charmbracelet";
         repo = "crush";
-        tag = "v0.82.0";
-        hash = "sha256-m+4CQzKmQR8jRBLHHCcWpdtldwkwXr3IPfPG0P9q2MM=";
+        tag = "v0.83.0";
+        hash = "sha256-dp3vUgBanzVANSY35viavBr+2z4iNEAIET3jDs6bAQw=";
       };
-      vendorHash = "sha256-4m/Bcf9gEk2cTPcdSIQan944Mihw+iV6CNvYc6UA0lY=";
+      vendorHash = "sha256-ZH6S+5isvIoPEkTAZPSAtiLCCgCq4z8wNb1KetAAgag=";
       patches = [
         ./patches/crush-hide-logo.patch
         ./patches/crush-sidebar-version.patch
       ];
+      postConfigure = ''
+        chmod -R u+w vendor
+        sed -i 's/go 1\.26\.5/go 1.26.4/g' go.mod vendor/modules.txt
+      '';
     }))
     cue
     diffoscope
@@ -255,6 +260,7 @@
     gojq
     golangci-lint
     gopls
+    (callPackage ./pkg/hunk { })
     imagemagick
     jujutsu
     just
@@ -270,7 +276,25 @@
     nixfmt
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
-    opencode
+    (opencode.overrideAttrs (old: {
+      version = "1.17.15";
+      src = fetchFromGitHub {
+        owner = "anomalyco";
+        repo = "opencode";
+        tag = "v1.17.15";
+        hash = "sha256-SBAKl0bsiSUDwvi+XCCgDL2SuP7NZAqx4iGyaMZz5N4=";
+      };
+      node_modules = old.node_modules.overrideAttrs (_: {
+        version = "1.17.15";
+        src = fetchFromGitHub {
+          owner = "anomalyco";
+          repo = "opencode";
+          tag = "v1.17.15";
+          hash = "sha256-SBAKl0bsiSUDwvi+XCCgDL2SuP7NZAqx4iGyaMZz5N4=";
+        };
+        outputHash = "sha256-9oSXcvvISB6WAqI6f/GBZ3i9IBwYrRQvKs82SLibJNo=";
+      });
+    }))
     pnpm_10
     postgresql
     python3
