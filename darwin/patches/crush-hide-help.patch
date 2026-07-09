@@ -1,0 +1,36 @@
+--- a/internal/ui/model/status.go
++++ b/internal/ui/model/status.go
+@@ -69,12 +69,7 @@
+ // Draw draws the status bar onto the screen.
+ func (s *Status) Draw(scr uv.Screen, area uv.Rectangle) {
+-	if !s.hideHelp {
+-		helpView := s.com.Styles.Status.Help.Render(s.help.View(s.helpKm))
+-		uv.NewStyledString(helpView).Draw(scr, area)
+-	}
+-
+ 	// Render notifications
+ 	if s.msg.IsEmpty() {
+ 		return
+ 	}
+ 
+--- a/internal/ui/model/ui.go
++++ b/internal/ui/model/ui.go
+@@ -2907,7 +2907,7 @@
+ 	area := image.Rect(0, 0, w, h)
+ 
+ 	// The help height
+-	helpHeight := 1
++	helpHeight := 0
+ 	// The editor height: textarea height + margin for attachments and bottom spacing.
+ 	editorHeight := m.textarea.Height() + editorHeightMargin
+ 	// The sidebar width
+@@ -2928,9 +2928,7 @@
+ 		layout.Fill(1),
+ 	).Split(area).Assign(&appRect, &helpRect)
+ 	appRect.Min.Y += 1
+-	appRect.Max.Y -= 1
+-	helpRect.Min.Y -= 1
+ 	appRect.Min.X += 1
+ 	appRect.Max.X -= 1
+ 
+ 	if slices.Contains([]uiState{uiOnboarding, uiInitialize, uiLanding}, m.state) {

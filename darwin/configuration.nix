@@ -238,6 +238,7 @@
       patches = [
         ./patches/crush-hide-logo.patch
         ./patches/crush-sidebar-version.patch
+        ./patches/crush-hide-help.patch
       ];
       postConfigure = ''
         chmod -R u+w vendor
