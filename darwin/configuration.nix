@@ -224,7 +224,27 @@
     chezmoi
     clash-rs
     (callPackage ./pkg/clipaste { })
-    codex
+    (let
+      newCodexSrc = fetchFromGitHub {
+        owner = "openai";
+        repo = "codex";
+        tag = "rust-v0.143.0";
+        hash = "sha256-4xJcE8/lFwp1r/J8z7HMb7A59WXkj3rtm9QDtjJfC04=";
+      };
+      newCodexDeps = rustPlatform.fetchCargoVendor {
+        pname = "codex";
+        version = "0.143.0";
+        src = newCodexSrc;
+        sourceRoot = "source/codex-rs";
+        hash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
+      };
+    in
+    codex.overrideAttrs (old: {
+      version = "0.143.0";
+      src = newCodexSrc;
+      cargoHash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
+      cargoDeps = newCodexDeps;
+    }))
     # container
     (crush.overrideAttrs (old: {
       version = "0.83.0";
@@ -278,22 +298,22 @@
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
     (opencode.overrideAttrs (old: {
-      version = "1.17.15";
+      version = "1.17.16";
       src = fetchFromGitHub {
         owner = "anomalyco";
         repo = "opencode";
-        tag = "v1.17.15";
-        hash = "sha256-SBAKl0bsiSUDwvi+XCCgDL2SuP7NZAqx4iGyaMZz5N4=";
+        tag = "v1.17.16";
+        hash = "sha256-XbxPEA1UPBi/xctRJsNXi6bEGGPHX7VyWPB1K5DJJRA=";
       };
       node_modules = old.node_modules.overrideAttrs (_: {
-        version = "1.17.15";
+        version = "1.17.16";
         src = fetchFromGitHub {
           owner = "anomalyco";
           repo = "opencode";
-          tag = "v1.17.15";
-          hash = "sha256-SBAKl0bsiSUDwvi+XCCgDL2SuP7NZAqx4iGyaMZz5N4=";
+          tag = "v1.17.16";
+          hash = "sha256-XbxPEA1UPBi/xctRJsNXi6bEGGPHX7VyWPB1K5DJJRA=";
         };
-        outputHash = "sha256-9oSXcvvISB6WAqI6f/GBZ3i9IBwYrRQvKs82SLibJNo=";
+        outputHash = "sha256-htDj8yzC3sIHPFgUBKZJPgHhZ9ygDOr/mhoKCbYUJuU=";
       });
     }))
     pnpm_10
