@@ -261,12 +261,12 @@
       (crush.override {
         buildGo126Module = pkgs.buildGo126Module.override { go = go_1_26_5; };
       }).overrideAttrs (old: {
-        version = "0.83.0";
+        version = "0.84.0";
         src = fetchFromGitHub {
           owner = "charmbracelet";
           repo = "crush";
-          tag = "v0.83.0";
-          hash = "sha256-dp3vUgBanzVANSY35viavBr+2z4iNEAIET3jDs6bAQw=";
+          tag = "v0.84.0";
+          hash = "sha256-yzlF8fZmcv1JAOpMluXmKWIFufNWcGYqRFxOYQmgC4s=";
         };
         vendorHash = "sha256-ZH6S+5isvIoPEkTAZPSAtiLCCgCq4z8wNb1KetAAgag=";
         patches = [
