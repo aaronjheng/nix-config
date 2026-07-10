@@ -248,25 +248,34 @@
       })
     )
     # container
-    (crush.overrideAttrs (old: {
-      version = "0.83.0";
-      src = fetchFromGitHub {
-        owner = "charmbracelet";
-        repo = "crush";
-        tag = "v0.83.0";
-        hash = "sha256-dp3vUgBanzVANSY35viavBr+2z4iNEAIET3jDs6bAQw=";
-      };
-      vendorHash = "sha256-ZH6S+5isvIoPEkTAZPSAtiLCCgCq4z8wNb1KetAAgag=";
-      patches = [
-        ./patches/crush-hide-logo.patch
-        ./patches/crush-sidebar-version.patch
-        ./patches/crush-hide-help.patch
-      ];
-      postConfigure = ''
-        chmod -R u+w vendor
-        sed -i 's/go 1\.26\.5/go 1.26.4/g' go.mod vendor/modules.txt
-      '';
-    }))
+    (
+      let
+        go_1_26_5 = pkgs.go_1_26.overrideAttrs (old: {
+          version = "1.26.5";
+          src = pkgs.fetchurl {
+            url = "https://go.dev/dl/go1.26.5.src.tar.gz";
+            hash = "sha256-SVvkvIcXasVnOS5bQRar2YRm0z17SdQedkzMaXay3EI=";
+          };
+        });
+      in
+      (crush.override {
+        buildGo126Module = pkgs.buildGo126Module.override { go = go_1_26_5; };
+      }).overrideAttrs (old: {
+        version = "0.83.0";
+        src = fetchFromGitHub {
+          owner = "charmbracelet";
+          repo = "crush";
+          tag = "v0.83.0";
+          hash = "sha256-dp3vUgBanzVANSY35viavBr+2z4iNEAIET3jDs6bAQw=";
+        };
+        vendorHash = "sha256-ZH6S+5isvIoPEkTAZPSAtiLCCgCq4z8wNb1KetAAgag=";
+        patches = [
+          ./patches/crush-hide-logo.patch
+          ./patches/crush-sidebar-version.patch
+          ./patches/crush-hide-help.patch
+        ];
+      })
+    )
     cue
     diffoscope
     duckdb
