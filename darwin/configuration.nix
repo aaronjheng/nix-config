@@ -229,21 +229,21 @@
         newCodexSrc = fetchFromGitHub {
           owner = "openai";
           repo = "codex";
-          tag = "rust-v0.143.0";
-          hash = "sha256-4xJcE8/lFwp1r/J8z7HMb7A59WXkj3rtm9QDtjJfC04=";
+          tag = "rust-v0.144.1";
+          hash = "sha256-KHgrqIZyAmLhTZSRYbb7huBO8neOib/B1Vx/oPW2nEU=";
         };
         newCodexDeps = rustPlatform.fetchCargoVendor {
           pname = "codex";
-          version = "0.143.0";
+          version = "0.144.1";
           src = newCodexSrc;
           sourceRoot = "source/codex-rs";
-          hash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
+          hash = "sha256-S4dsZXfmKvJItL2XYKyxfhqdCMATEG6oPjrtVRwkuYc=";
         };
       in
       codex.overrideAttrs (old: {
-        version = "0.143.0";
+        version = "0.144.1";
         src = newCodexSrc;
-        cargoHash = "sha256-YUQYPo4joZwHlderRA4f5A/04+rI+R1jd7RsfA5+P1E=";
+        cargoHash = "sha256-S4dsZXfmKvJItL2XYKyxfhqdCMATEG6oPjrtVRwkuYc=";
         cargoDeps = newCodexDeps;
       })
     )
