@@ -224,6 +224,7 @@
     charm-freeze
     chezmoi
     clash-rs
+    claude-code
     (callPackage ./pkg/clipaste { })
     (
       let
