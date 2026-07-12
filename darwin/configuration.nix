@@ -226,29 +226,7 @@
     clash-rs
     claude-code
     (callPackage ./pkg/clipaste { })
-    (
-      let
-        newCodexSrc = fetchFromGitHub {
-          owner = "openai";
-          repo = "codex";
-          tag = "rust-v0.144.1";
-          hash = "sha256-KHgrqIZyAmLhTZSRYbb7huBO8neOib/B1Vx/oPW2nEU=";
-        };
-        newCodexDeps = rustPlatform.fetchCargoVendor {
-          pname = "codex";
-          version = "0.144.1";
-          src = newCodexSrc;
-          sourceRoot = "source/codex-rs";
-          hash = "sha256-S4dsZXfmKvJItL2XYKyxfhqdCMATEG6oPjrtVRwkuYc=";
-        };
-      in
-      codex.overrideAttrs (old: {
-        version = "0.144.1";
-        src = newCodexSrc;
-        cargoHash = "sha256-S4dsZXfmKvJItL2XYKyxfhqdCMATEG6oPjrtVRwkuYc=";
-        cargoDeps = newCodexDeps;
-      })
-    )
+    codex
     # container
     (
       let
@@ -280,7 +258,7 @@
         })
     )
     cue
-    diffoscope
+    # diffoscope
     duckdb
     dust
     duf
@@ -328,7 +306,7 @@
     teleport
     temporal-cli
     typescript-language-server
-    unar
+    # unar
     uv
     viu
     xh
