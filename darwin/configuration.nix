@@ -264,17 +264,17 @@
         buildGo126Module = pkgs.buildGo126Module.override { go = go_1_26_5; };
       }).overrideAttrs
         (old: {
-          version = "0.84.0";
+          version = "0.84.1";
           src = fetchFromGitHub {
             owner = "charmbracelet";
             repo = "crush";
-            tag = "v0.84.0";
-            hash = "sha256-yzlF8fZmcv1JAOpMluXmKWIFufNWcGYqRFxOYQmgC4s=";
+            tag = "v0.84.1";
+            hash = "sha256-s5H8JTo4592DMQJkq8iRXqSOekeMQLXKj8eXblD+QQY=";
           };
-          vendorHash = "sha256-ZH6S+5isvIoPEkTAZPSAtiLCCgCq4z8wNb1KetAAgag=";
+          vendorHash = "sha256-0a7grI8GESw+aFqOD9pgL2m/l87CCvNJVCiN+0rAQCU=";
           patches = [
-            ./patches/crush-hide-logo.patch
             ./patches/crush-sidebar-version.patch
+            ./patches/crush-hide-logo.patch
             ./patches/crush-hide-help.patch
           ];
         })

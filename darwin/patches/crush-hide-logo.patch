@@ -2,15 +2,15 @@ diff --git a/internal/ui/model/sidebar.go b/internal/ui/model/sidebar.go
 index e98ef33..aeb1c46 100644
 --- a/internal/ui/model/sidebar.go
 +++ b/internal/ui/model/sidebar.go
-@@ -7,7 +7,6 @@ import (
- 
+@@ -8,7 +8,6 @@ import (
  	"charm.land/lipgloss/v2"
  	"github.com/charmbracelet/crush/internal/ui/common"
 -	"github.com/charmbracelet/crush/internal/ui/logo"
+ 	"github.com/charmbracelet/crush/internal/version"
  	uv "github.com/charmbracelet/ultraviolet"
  	"github.com/charmbracelet/ultraviolet/layout"
  )
-@@ -133,22 +132,13 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+@@ -134,22 +133,13 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
  		return
  	}
  
