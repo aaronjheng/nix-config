@@ -258,6 +258,7 @@
         })
     )
     cue
+    cursor-cli
     # diffoscope
     duckdb
     dust
