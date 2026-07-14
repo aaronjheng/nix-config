@@ -318,7 +318,6 @@
     teleport
     temporal-cli
     typescript-language-server
-    # unar
     uv
     viu
     xh
