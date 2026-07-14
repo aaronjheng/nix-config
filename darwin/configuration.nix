@@ -225,7 +225,7 @@
     chezmoi
     clash-rs
     claude-code
-    (callPackage ./pkg/clipaste { })
+    clipaste
     codex
     # container
     (
@@ -281,7 +281,7 @@
     golangci-lint
     gopls
     grok-build
-    (callPackage ./pkg/hunk { })
+    hunk
     imagemagick
     jujutsu
     just
