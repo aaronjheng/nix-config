@@ -224,14 +224,14 @@
     clash-rs
     clipaste
     (codex.overrideAttrs (old: {
-      version = "0.144.3";
+      version = "0.144.4";
       src = fetchFromGitHub {
         owner = "openai";
         repo = "codex";
-        rev = "rust-v0.144.3";
-        hash = "sha256-TtOzSLByGf+8K5fs0b92wJ4e9tBZvFbJqfMtvSuGU58=";
+        rev = "rust-v0.144.4";
+        hash = "sha256-NmYZxjNFPkRWN4rw+eeka10pJt6/oU3ZoLXBxj3dPRU=";
       };
-      cargoHash = "sha256-w3iFC7b4m3FTgyFgQ1ZR508mOy9lcyOsubocq9LdSOM=";
+      cargoHash = "sha256-u2wqR1kQawFuvm5nOHbYjlghZL1n3GnnmvNfDLBYvY8=";
     }))
     # container
     (
