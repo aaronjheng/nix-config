@@ -213,7 +213,6 @@
 
   users.users.aaron.packages = with pkgs; [
     _7zz
-    antigravity-cli
     atuin
     awscli2
     bat
@@ -288,7 +287,6 @@
     gojq
     golangci-lint
     gopls
-    grok-build
     hunk
     imagemagick
     jujutsu
