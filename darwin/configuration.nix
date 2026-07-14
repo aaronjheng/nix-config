@@ -224,7 +224,6 @@
     charm-freeze
     chezmoi
     clash-rs
-    claude-code
     clipaste
     (codex.overrideAttrs (old: {
       version = "0.144.3";
