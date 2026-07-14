@@ -226,7 +226,16 @@
     clash-rs
     claude-code
     clipaste
-    codex
+    (codex.overrideAttrs (old: {
+      version = "0.144.3";
+      src = fetchFromGitHub {
+        owner = "openai";
+        repo = "codex";
+        rev = "rust-v0.144.3";
+        hash = "sha256-TtOzSLByGf+8K5fs0b92wJ4e9tBZvFbJqfMtvSuGU58=";
+      };
+      cargoHash = "sha256-w3iFC7b4m3FTgyFgQ1ZR508mOy9lcyOsubocq9LdSOM=";
+    }))
     # container
     (
       let
