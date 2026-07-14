@@ -25,8 +25,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   postConfigure = ''
-    cp -rLT ${finalAttrs.zigDeps} "$ZIG_GLOBAL_CACHE_DIR/p"
-    chmod -R u+w "$ZIG_GLOBAL_CACHE_DIR/p"
+    ln -sf ${finalAttrs.zigDeps} "$ZIG_GLOBAL_CACHE_DIR/p"
   '';
 
   nativeBuildInputs = [
