@@ -220,7 +220,6 @@
     broot
     btop
     buf
-    charm-freeze
     chezmoi
     clash-rs
     clipaste
