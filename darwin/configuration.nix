@@ -140,6 +140,7 @@
           "/Users/aaron/.local/state/clash"
         ];
 
+        KeepAlive = true;
         RunAtLoad = true;
 
         StandardOutPath = "/Users/aaron/Library/Logs/clash.log";
