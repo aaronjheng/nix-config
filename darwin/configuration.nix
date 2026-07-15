@@ -258,6 +258,7 @@
             ./patches/crush-sidebar-version.patch
             ./patches/crush-hide-logo.patch
             ./patches/crush-hide-help.patch
+            ./patches/crush-configured-providers-first.patch
           ];
         })
     )

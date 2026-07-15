@@ -1,0 +1,42 @@
+diff --git a/internal/ui/dialog/models.go b/internal/ui/dialog/models.go
+index e32b80af..f2fc8a2c 100644
+--- a/internal/ui/dialog/models.go
++++ b/internal/ui/dialog/models.go
+@@ -407,13 +407,35 @@ func (m *Models) setProviderItems() error {
+ 		}
+ 	}
+ 
+-	// Now add known providers from the predefined list.
+-	// Providers already has Hyper at the front of the list.
++	// Now add known providers from the predefined list, but order them so
++	// that the user's configured providers come first. This keeps the picker
++	// stable and surfaces the providers the user actually set up, instead of
++	// leaving them scattered through the built-in catalog order.
++	configuredKnown := make([]catwalk.Provider, 0)
++	remainingKnown := make([]catwalk.Provider, 0)
+ 	for _, provider := range m.providers {
+ 		providerID := string(provider.ID)
+ 		if addedProviders[providerID] {
+ 			continue
+ 		}
++		if _, providerConfigured := cfg.Providers.Get(providerID); providerConfigured {
++			configuredKnown = append(configuredKnown, provider)
++		} else {
++			remainingKnown = append(remainingKnown, provider)
++		}
++	}
++	// Sort configured providers deterministically (by display name) so the
++	// order no longer depends on map iteration order.
++	slices.SortFunc(configuredKnown, func(a, b catwalk.Provider) int {
++		return cmp.Compare(cmp.Or(a.Name, string(a.ID)), cmp.Or(b.Name, string(b.ID)))
++	})
++	orderedProviders := append(append([]catwalk.Provider{}, configuredKnown...), remainingKnown...)
++
++	for _, provider := range orderedProviders {
++		providerID := string(provider.ID)
++		if addedProviders[providerID] {
++			continue
++		}
+ 
+ 		providerConfig, providerConfigured := cfg.Providers.Get(providerID)
+ 		if providerConfigured && providerConfig.Disable {
