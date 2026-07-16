@@ -221,13 +221,15 @@
     chezmoi
     clash-rs
     clipaste
-    (codex.overrideAttrs (old: {
-      version = "0.144.4";
+    (let
+      codexVersion = "0.144.5";
+    in codex.overrideAttrs (old: {
+      version = codexVersion;
       src = fetchFromGitHub {
         owner = "openai";
         repo = "codex";
-        rev = "rust-v0.144.4";
-        hash = "sha256-NmYZxjNFPkRWN4rw+eeka10pJt6/oU3ZoLXBxj3dPRU=";
+        rev = "rust-v${codexVersion}";
+        hash = "sha256-v8MsNWeqiYsTvPtlXs8UMuZKLf7Cj71Vl+MHXihAkos=";
       };
       cargoHash = "sha256-u2wqR1kQawFuvm5nOHbYjlghZL1n3GnnmvNfDLBYvY8=";
     }))
