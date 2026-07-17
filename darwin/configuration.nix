@@ -221,18 +221,21 @@
     chezmoi
     clash-rs
     clipaste
-    (let
-      codexVersion = "0.144.5";
-    in codex.overrideAttrs (old: {
-      version = codexVersion;
-      src = fetchFromGitHub {
-        owner = "openai";
-        repo = "codex";
-        rev = "rust-v${codexVersion}";
-        hash = "sha256-v8MsNWeqiYsTvPtlXs8UMuZKLf7Cj71Vl+MHXihAkos=";
-      };
-      cargoHash = "sha256-u2wqR1kQawFuvm5nOHbYjlghZL1n3GnnmvNfDLBYvY8=";
-    }))
+    (
+      let
+        codexVersion = "0.144.5";
+      in
+      codex.overrideAttrs (old: {
+        version = codexVersion;
+        src = fetchFromGitHub {
+          owner = "openai";
+          repo = "codex";
+          rev = "rust-v${codexVersion}";
+          hash = "sha256-v8MsNWeqiYsTvPtlXs8UMuZKLf7Cj71Vl+MHXihAkos=";
+        };
+        cargoHash = "sha256-u2wqR1kQawFuvm5nOHbYjlghZL1n3GnnmvNfDLBYvY8=";
+      })
+    )
     # container
     (
       let
@@ -295,6 +298,7 @@
     k6
     (callPackage ./pkg/kafka-cli { })
     kubectl
+    mediainfo
     mitmproxy
     mysql-shell_8
     nmap
