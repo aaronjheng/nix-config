@@ -303,7 +303,7 @@
     nixfmt
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
-    opencode
+    (callPackage ./pkg/opencode { })
     pnpm_10
     postgresql
     python3
