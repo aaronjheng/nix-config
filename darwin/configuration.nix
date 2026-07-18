@@ -239,6 +239,7 @@
     # container
     (
       let
+        crushVersion = "0.85.0";
         go_1_26_5 = pkgs.go_1_26.overrideAttrs (old: {
           version = "1.26.5";
           src = pkgs.fetchurl {
@@ -251,11 +252,11 @@
         buildGo126Module = pkgs.buildGo126Module.override { go = go_1_26_5; };
       }).overrideAttrs
         (old: {
-          version = "0.85.0";
+          version = crushVersion;
           src = fetchFromGitHub {
             owner = "charmbracelet";
             repo = "crush";
-            tag = "v0.85.0";
+            tag = "v${crushVersion}";
             hash = "sha256-rVrjaj2LB3Z7kjW1E2aNbJXJ2BYTILOR57RTiGbF1Bc=";
           };
           vendorHash = "sha256-MgSA6tDG2fDil3eGZC/7WaCyb7NzM4p2Ue7kJBZoleI=";
