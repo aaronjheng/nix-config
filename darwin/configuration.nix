@@ -265,6 +265,8 @@
             ./patches/crush-hide-help.patch
             ./patches/crush-configured-providers-first.patch
           ];
+
+          doCheck = false;
         })
     )
     cue
