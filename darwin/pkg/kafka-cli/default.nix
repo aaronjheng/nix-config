@@ -13,11 +13,11 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "kafka-cli";
-    rev = "b55c27d3aacf47411b41d32cbcaa5ac19e0b8897";
-    hash = "sha256-R05i4d0DZQaRNbKOMDJnW2n5fWMwKIGIPKRgPnMOVME=";
+    rev = "0afb6f10bf16d3b317b95302212312577e7c780e";
+    hash = "sha256-wCHufUonEydh9js0mC2fPpVnXIMVuscJc8oniDHDtyw=";
   };
 
-  vendorHash = "sha256-SoJEp7oJ21HOTzEw7VsdekUB8Ek44OzA/hJ/4naNsZU=";
+  vendorHash = "sha256-DyxJb5i20UnP4/EwJ7mGkoJNVVnh4CeIndGB9r+cc5o=";
 
   excludedPackages = [
     "test"
