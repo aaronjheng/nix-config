@@ -272,10 +272,10 @@
     )
     cue
     (cursor-cli.overrideAttrs (old: {
-      version = "2026.07.09-a3815c0";
+      version = "2026.07.16-899851b";
       src = fetchurl {
-        url = "https://downloads.cursor.com/lab/2026.07.09-a3815c0/darwin/arm64/agent-cli-package.tar.gz";
-        hash = "sha256-AJ7oV9SfF8EOUDXjOITrJY0fODnB1SvbNfNaEXNp394=";
+        url = "https://downloads.cursor.com/lab/2026.07.16-899851b/darwin/arm64/agent-cli-package.tar.gz";
+        hash = "sha256-wM17Y8AftjtE4zx6JhNDLo/YyxOIHacqwWE8nxQIEV8=";
       };
     }))
     # diffoscope
@@ -311,6 +311,18 @@
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
     (callPackage ./pkg/opencode { })
+    (
+      let
+        piVersion = "0.80.10";
+      in
+      pi-coding-agent.overrideAttrs (old: {
+        version = piVersion;
+        src = fetchurl {
+          url = "https://github.com/earendil-works/pi/archive/refs/tags/v${piVersion}.tar.gz";
+          hash = "sha256-E0dp/aaQSoHhH9xnuRIJx6S0kDxmrZOrn/jIvce1uLw=";
+        };
+      })
+    )
     pnpm_10
     postgresql
     python3
