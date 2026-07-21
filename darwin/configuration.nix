@@ -220,6 +220,7 @@
     buf
     chezmoi
     clash-rs
+    claude-code
     clipaste
     (
       let

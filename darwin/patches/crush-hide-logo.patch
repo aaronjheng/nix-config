@@ -2,18 +2,18 @@ diff --git a/internal/ui/model/sidebar.go b/internal/ui/model/sidebar.go
 index c913685..3b0b183 100644
 --- a/internal/ui/model/sidebar.go
 +++ b/internal/ui/model/sidebar.go
-@@ -10,10 +10,8 @@ import (
+@@ -10,10 +10,9 @@ import (
  	mcp "github.com/charmbracelet/crush/internal/agent/tools/mcp"
  	"github.com/charmbracelet/crush/internal/config"
  	"github.com/charmbracelet/crush/internal/ui/common"
 -	"github.com/charmbracelet/crush/internal/ui/logo"
  	"github.com/charmbracelet/crush/internal/version"
  	uv "github.com/charmbracelet/ultraviolet"
--	"github.com/charmbracelet/ultraviolet/layout"
+ 	"github.com/charmbracelet/ultraviolet/layout"
  )
  
  // modelInfo renders the current model information including reasoning
-@@ -69,30 +67,15 @@ func (m *UI) updateSidebarScrollState() {
+@@ -69,31 +67,16 @@ func (m *UI) updateSidebarScrollState() {
  		return
  	}
  
@@ -39,22 +39,33 @@ index c913685..3b0b183 100644
 -		layout.Len(lipgloss.Height(sidebarLogo)),
 -		layout.Fill(1),
 -	).Split(m.layout.sidebar).Assign(&logoRect, &contentRect)
--
--	contentHeight := contentRect.Dy()
 +	contentHeight := m.layout.sidebar.Dy()
  
- 	// Render all items without truncation; virtual scrolling handles overflow.
- 	lspSection := m.lspInfo(contentWidth, len(m.lspStates), true)
+-	contentHeight := contentRect.Dy()
+-
+ 	// Reserve one line at the bottom for the version text.
+ 	contentHeight--
+ 
 @@ -126,7 +109,7 @@ func (m *UI) updateSidebarScrollState() {
  	m.sidebarTotalLines = totalLines
  	m.sidebarContentWidth = contentWidth
  	m.sidebarContentHeight = contentHeight
 -	m.sidebarDrawLogo = sidebarLogo
 +	m.sidebarDrawLogo = ""
+ 	m.sidebarVersion = t.Sidebar.WorkingDir.Width(contentWidth).Render(fmt.Sprintf("Crush %s", version.Version))
  	m.sidebarScrollable = totalLines > contentHeight
  	m.sidebarMaxOffsetVal = max(0, totalLines-contentHeight)
+@@ -144,25 +127,22 @@ func (m *UI) updateSidebarScrollState() {
+ 	}
+ }
  
-@@ -151,16 +134,11 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+-// drawSidebar renders the chat sidebar with a fixed logo and a
+-// virtual-scrolling content area with an auto-hiding scrollbar. While the
+-// sidebar is focused, the scrollbar stays visible.
++// drawSidebar renders the chat sidebar with a virtual-scrolling content area
++// and a fixed version text at the bottom.
+ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+ 	if m.session == nil {
  		return
  	}
  
@@ -63,16 +74,18 @@ index c913685..3b0b183 100644
  	contentHeight := m.sidebarContentHeight
  	totalLines := m.sidebarTotalLines
  
--	var logoRect, contentRect image.Rectangle
--	layout.Vertical(
+-	var logoRect, contentRect, versionRect image.Rectangle
++	var contentRect, versionRect image.Rectangle
+ 	layout.Vertical(
 -		layout.Len(lipgloss.Height(sidebarLogo)),
--		layout.Fill(1),
--	).Split(area).Assign(&logoRect, &contentRect)
-+	contentRect := area
+ 		layout.Fill(1),
+ 		layout.Len(1),
+-	).Split(area).Assign(&logoRect, &contentRect, &versionRect)
++	).Split(area).Assign(&contentRect, &versionRect)
  
  	// Slice visible lines.
- 	end := min(m.sidebarOffset+contentHeight, totalLines)
-@@ -172,14 +150,6 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+ 	contentHeight = min(contentHeight, contentRect.Dy())
+@@ -175,14 +155,6 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
  	// auto-hide.
  	scrollbarVisible := totalLines > contentHeight && (m.sidebarScrollbarVisible || m.focus == uiFocusSidebar)
  
@@ -84,6 +97,6 @@ index c913685..3b0b183 100644
 -			Render(sidebarLogo),
 -	).Draw(scr, logoRect)
 -
- 	// Draw the visible content in the scrollable area.
+ 	// Draw the fixed version text at the bottom.
  	uv.NewStyledString(
  		lipgloss.NewStyle().
