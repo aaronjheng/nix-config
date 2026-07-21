@@ -272,13 +272,6 @@
         })
     )
     cue
-    (cursor-cli.overrideAttrs (old: {
-      version = "2026.07.16-899851b";
-      src = fetchurl {
-        url = "https://downloads.cursor.com/lab/2026.07.16-899851b/darwin/arm64/agent-cli-package.tar.gz";
-        hash = "sha256-wM17Y8AftjtE4zx6JhNDLo/YyxOIHacqwWE8nxQIEV8=";
-      };
-    }))
     # diffoscope
     duckdb
     dust
