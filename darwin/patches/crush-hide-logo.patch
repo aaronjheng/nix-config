@@ -1,35 +1,89 @@
 diff --git a/internal/ui/model/sidebar.go b/internal/ui/model/sidebar.go
-index e98ef33..aeb1c46 100644
+index c913685..3b0b183 100644
 --- a/internal/ui/model/sidebar.go
 +++ b/internal/ui/model/sidebar.go
-@@ -8,7 +8,6 @@ import (
- 	"charm.land/lipgloss/v2"
+@@ -10,10 +10,8 @@ import (
+ 	mcp "github.com/charmbracelet/crush/internal/agent/tools/mcp"
+ 	"github.com/charmbracelet/crush/internal/config"
  	"github.com/charmbracelet/crush/internal/ui/common"
 -	"github.com/charmbracelet/crush/internal/ui/logo"
  	"github.com/charmbracelet/crush/internal/version"
  	uv "github.com/charmbracelet/ultraviolet"
- 	"github.com/charmbracelet/ultraviolet/layout"
+-	"github.com/charmbracelet/ultraviolet/layout"
  )
-@@ -134,22 +133,13 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+ 
+ // modelInfo renders the current model information including reasoning
+@@ -69,30 +67,15 @@ func (m *UI) updateSidebarScrollState() {
  		return
  	}
  
 -	const logoHeightBreakpoint = 30
 -
  	t := m.com.Styles
- 	width := area.Dx()
- 	height := area.Dy()
+ 	width := m.layout.sidebar.Dx()
+-	height := m.layout.sidebar.Dy()
  
- 	title := t.Sidebar.SessionTitle.Width(width).MaxHeight(2).Render(m.session.Title)
- 	cwd := common.PrettyPath(t, m.com.Workspace.WorkingDir(), width)
+ 	contentWidth := max(width-2, 1)
+ 
+ 	title := t.Sidebar.SessionTitle.Width(contentWidth).MaxHeight(2).Render(m.session.Title)
+ 	cwd := common.PrettyPath(t, m.com.Workspace.WorkingDir(), contentWidth)
 -	sidebarLogo := m.sidebarLogo
 -	if height < logoHeightBreakpoint {
--		sidebarLogo = logo.SmallRender(m.com.Styles, width, logo.Opts{
+-		sidebarLogo = lipgloss.JoinVertical(lipgloss.Left, logo.SmallRender(m.com.Styles, contentWidth, logo.Opts{
 -			Hyper: m.com.IsHyper(),
--		})
+-		}), "")
 -	}
- 	blocks := []string{
--		sidebarLogo,
- 		title,
- 		"",
- 		cwd,
+ 
+-	var logoRect, contentRect image.Rectangle
+-	layout.Vertical(
+-		layout.Len(lipgloss.Height(sidebarLogo)),
+-		layout.Fill(1),
+-	).Split(m.layout.sidebar).Assign(&logoRect, &contentRect)
+-
+-	contentHeight := contentRect.Dy()
++	contentHeight := m.layout.sidebar.Dy()
+ 
+ 	// Render all items without truncation; virtual scrolling handles overflow.
+ 	lspSection := m.lspInfo(contentWidth, len(m.lspStates), true)
+@@ -126,7 +109,7 @@ func (m *UI) updateSidebarScrollState() {
+ 	m.sidebarTotalLines = totalLines
+ 	m.sidebarContentWidth = contentWidth
+ 	m.sidebarContentHeight = contentHeight
+-	m.sidebarDrawLogo = sidebarLogo
++	m.sidebarDrawLogo = ""
+ 	m.sidebarScrollable = totalLines > contentHeight
+ 	m.sidebarMaxOffsetVal = max(0, totalLines-contentHeight)
+ 
+@@ -151,16 +134,11 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+ 		return
+ 	}
+ 
+-	sidebarLogo := m.sidebarDrawLogo
+ 	contentWidth := m.sidebarContentWidth
+ 	contentHeight := m.sidebarContentHeight
+ 	totalLines := m.sidebarTotalLines
+ 
+-	var logoRect, contentRect image.Rectangle
+-	layout.Vertical(
+-		layout.Len(lipgloss.Height(sidebarLogo)),
+-		layout.Fill(1),
+-	).Split(area).Assign(&logoRect, &contentRect)
++	contentRect := area
+ 
+ 	// Slice visible lines.
+ 	end := min(m.sidebarOffset+contentHeight, totalLines)
+@@ -172,14 +150,6 @@ func (m *UI) drawSidebar(scr uv.Screen, area uv.Rectangle) {
+ 	// auto-hide.
+ 	scrollbarVisible := totalLines > contentHeight && (m.sidebarScrollbarVisible || m.focus == uiFocusSidebar)
+ 
+-	// Draw the fixed logo.
+-	uv.NewStyledString(
+-		lipgloss.NewStyle().
+-			MaxWidth(contentWidth).
+-			MaxHeight(lipgloss.Height(sidebarLogo)).
+-			Render(sidebarLogo),
+-	).Draw(scr, logoRect)
+-
+ 	// Draw the visible content in the scrollable area.
+ 	uv.NewStyledString(
+ 		lipgloss.NewStyle().

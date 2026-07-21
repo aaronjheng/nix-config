@@ -239,7 +239,7 @@
     # container
     (
       let
-        crushVersion = "0.85.0";
+        crushVersion = "0.86.0";
         go_1_26_5 = pkgs.go_1_26.overrideAttrs (old: {
           version = "1.26.5";
           src = pkgs.fetchurl {
@@ -257,9 +257,9 @@
             owner = "charmbracelet";
             repo = "crush";
             tag = "v${crushVersion}";
-            hash = "sha256-rVrjaj2LB3Z7kjW1E2aNbJXJ2BYTILOR57RTiGbF1Bc=";
+            hash = "sha256-dUeXU65A9/d365a9Z+eUoHOR0RnJV9SAYsks+Vtz9js=";
           };
-          vendorHash = "sha256-MgSA6tDG2fDil3eGZC/7WaCyb7NzM4p2Ue7kJBZoleI=";
+          vendorHash = "sha256-9WkkosPMwXsj32a5Zj4ZxphuB7aVteKq/YTzxP9Xmf0=";
           patches = [
             ./patches/crush-sidebar-version.patch
             ./patches/crush-hide-logo.patch

@@ -1,54 +1,29 @@
+diff --git a/internal/ui/model/sidebar.go b/internal/ui/model/sidebar.go
+index 3fe9e19..c913685 100644
 --- a/internal/ui/model/sidebar.go
 +++ b/internal/ui/model/sidebar.go
-@@ -8,6 +8,7 @@
- 	"charm.land/lipgloss/v2"
+@@ -11,6 +11,7 @@ import (
+ 	"github.com/charmbracelet/crush/internal/config"
  	"github.com/charmbracelet/crush/internal/ui/common"
  	"github.com/charmbracelet/crush/internal/ui/logo"
 +	"github.com/charmbracelet/crush/internal/version"
  	uv "github.com/charmbracelet/ultraviolet"
  	"github.com/charmbracelet/ultraviolet/layout"
  )
-@@ -194,22 +195,30 @@
- 	skillsSection := m.skillsInfo(width, maxSkills, true)
- 	filesSection := m.filesInfo(m.com.Workspace.WorkingDir(), width, maxFiles, true)
+@@ -100,6 +101,7 @@ func (m *UI) updateSidebarScrollState() {
+ 	filesSection := m.filesInfo(m.com.Workspace.WorkingDir(), contentWidth, fileChangeCount(m.sessionFiles), true)
  
-+	sidebarContent := lipgloss.JoinVertical(
-+		lipgloss.Left,
-+		sidebarHeader,
-+		filesSection,
+ 	// Build the scrollable content.
++	versionText := t.Sidebar.WorkingDir.Width(contentWidth).Render(fmt.Sprintf("Crush %s", version.Version))
+ 	content := lipgloss.JoinVertical(
+ 		lipgloss.Left,
+ 		title,
+@@ -115,6 +117,8 @@ func (m *UI) updateSidebarScrollState() {
+ 		mcpSection,
+ 		"",
+ 		skillsSection,
 +		"",
-+		lspSection,
-+		"",
-+		mcpSection,
-+		"",
-+		skillsSection,
-+	)
-+
-+	versionText := t.Sidebar.WorkingDir.Width(width).Render(fmt.Sprintf("Crush %s", version.Version))
-+	versionArea := max(0, height-lipgloss.Height(sidebarContent))
-+	sidebarContent = lipgloss.JoinVertical(
-+		lipgloss.Left,
-+		sidebarContent,
-+		lipgloss.PlaceVertical(versionArea, lipgloss.Bottom, versionText),
-+	)
-+
- 	uv.NewStyledString(
- 		lipgloss.NewStyle().
- 			MaxWidth(width).
- 			MaxHeight(height).
--			Render(
--				lipgloss.JoinVertical(
--					lipgloss.Left,
--					sidebarHeader,
--					filesSection,
--					"",
--					lspSection,
--					"",
--					mcpSection,
--					"",
--					skillsSection,
--				),
--			),
-+			Render(sidebarContent),
- 	).Draw(scr, area)
- }
++		versionText,
+ 	)
+ 
+ 	totalLines := strings.Count(content, "\n") + 1
