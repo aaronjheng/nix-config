@@ -290,18 +290,7 @@
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
     (callPackage ./pkg/opencode { })
-    (
-      let
-        piVersion = "0.80.10";
-      in
-      pi-coding-agent.overrideAttrs (old: {
-        version = piVersion;
-        src = fetchurl {
-          url = "https://github.com/earendil-works/pi/archive/refs/tags/v${piVersion}.tar.gz";
-          hash = "sha256-E0dp/aaQSoHhH9xnuRIJx6S0kDxmrZOrn/jIvce1uLw=";
-        };
-      })
-    )
+    (callPackage ./pkg/pi { })
     pnpm_10
     postgresql
     python3
