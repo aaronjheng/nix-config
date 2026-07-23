@@ -257,7 +257,7 @@
     nixfmt
     oath-toolkit
     (callPackage ./pkg/ollama-bin { })
-    (callPackage ./pkg/opencode { })
+    opencode
     (callPackage ./pkg/pi { })
     pnpm_10
     postgresql
