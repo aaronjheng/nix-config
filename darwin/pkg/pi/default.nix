@@ -14,14 +14,14 @@
 
 buildNpmPackage (finalAttrs: {
   pname = "pi";
-  version = "0.81.1";
+  version = "0.82.0";
 
   src = fetchurl {
     url = "https://github.com/earendil-works/pi/archive/refs/tags/v${finalAttrs.version}.tar.gz";
-    hash = "sha256-tiY/Fe26L2qUoB3G8YSAeu4Lsw6WnA4gPrf8C0+77SE=";
+    hash = "sha256-RAV68003dB4eexqNUEGyzKnKa6RvqgxL2Fquyg6SpA4=";
   };
 
-  npmDepsHash = "sha256-lzKQZbnITzgV9koucsMno6f61ubBLYUcwQEXtak1r1s=";
+  npmDepsHash = "sha256-3oqrN/uguYfkUHlfmKGxnLIvUo484IMGlydz6p9o/Dw=";
 
   npmWorkspace = "packages/coding-agent";
 
