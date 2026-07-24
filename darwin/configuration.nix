@@ -263,6 +263,7 @@
     postgresql
     python3
     python3Packages.ipython
+    pyright
     ripgrep
     (callPackage ./pkg/redis-cli { })
     rtk
