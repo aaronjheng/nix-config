@@ -15,8 +15,8 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "e01539d05c2291c5293eb62d066e9fec512f89fb";
-    hash = "sha256-6yolghKWHfY82t7PQEGBz8hmb70LjiRL8o5M+nve9rU=";
+    rev = "135ebe949be528ab36d9c751d8434feac69cd1d5";
+    hash = "sha256-2pmkDBTXqBX8QZXKDXz6f2kwf7FfKmCDLVR5hgfgwwo=";
   };
 
   zigDeps = zig.fetchDeps {

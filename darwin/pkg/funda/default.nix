@@ -11,8 +11,8 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "funda";
-    rev = "a9d22e74568c6d21810059fabb873e664e2ef2c7";
-    hash = "sha256-GprBmzMeDPE0XpGOPpOIX7ZlFeIcnqbcpk4iWu1CYLk=";
+    rev = "2010815c3cb0f21cd9f5d2cdaf4295cff81ec441";
+    hash = "sha256-RapSHfka1OaPRBfqSowopJvTpTY3T+dduDP+fT7lbMQ=";
   };
 
   vendorHash = "sha256-6diwmvgu16fW3je2TM9NLY9YIde1GK0XcGx69dkEMWw=";
