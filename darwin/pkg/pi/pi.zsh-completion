@@ -1,0 +1,216 @@
+#compdef pi
+
+# pi - AI coding assistant shell completion (zsh)
+# Covers all static built-in subcommands and flags from pi --help.
+#
+# Usage:
+#   pi [global flags] <subcommand> [subcommand args]
+#   pi [global flags] [@files...] [messages...]
+
+# ── Known provider names ──────────────────────────────────────────────
+local -a _pi_providers
+_pi_providers=(
+  'anthropic:Anthropic Claude API'
+  'ant-ling:Ant Ling API'
+  'openai:OpenAI API'
+  'azure-openai-responses:Azure OpenAI Responses API'
+  'deepseek:DeepSeek API'
+  'nvidia:NVIDIA NIM API'
+  'google:Google Gemini API'
+  'google-vertex:Google Vertex AI'
+  'amazon-bedrock:Amazon Bedrock'
+  'mistral:Mistral API'
+  'groq:Groq API'
+  'cerebras:Cerebras API'
+  'cloudflare-ai-gateway:Cloudflare AI Gateway'
+  'cloudflare-workers-ai:Cloudflare Workers AI'
+  'xai:xAI Grok API'
+  'openrouter:OpenRouter API'
+  'vercel-ai-gateway:Vercel AI Gateway'
+  'zai:ZAI Coding Plan (Global)'
+  'zai-coding-cn:ZAI Coding Plan (China)'
+  'opencode:OpenCode Zen'
+  'opencode-go:OpenCode Go'
+  'huggingface:Hugging Face'
+  'fireworks:Fireworks AI'
+  'together:Together AI'
+  'kimi-coding:Kimi For Coding'
+  'minimax:MiniMax'
+  'minimax-cn:MiniMax (China)'
+  'qwen-token-plan:Qwen Token Plan'
+  'qwen-token-plan-cn:Qwen Token Plan (China)'
+  'xiaomi:Xiaomi MiMo'
+  'xiaomi-token-plan-cn:Xiaomi MiMo Token Plan (China)'
+  'xiaomi-token-plan-ams:Xiaomi MiMo Token Plan (Amsterdam)'
+  'xiaomi-token-plan-sgp:Xiaomi MiMo Token Plan (Singapore)'
+  'radius:Radius gateway'
+)
+
+# ── Built-in tool names ───────────────────────────────────────────────
+local -a _pi_tools
+_pi_tools=(
+  'read:Read file contents'
+  'bash:Execute bash commands'
+  'edit:Edit files with find/replace'
+  'write:Write files (creates/overwrites)'
+  'grep:Search file contents (read-only, off by default)'
+  'find:Find files by glob pattern (read-only, off by default)'
+  'ls:List directory contents (read-only, off by default)'
+)
+
+# ── Thinking levels ───────────────────────────────────────────────────
+local -a _pi_thinking_levels
+_pi_thinking_levels=(
+  'off:Disable extended thinking'
+  'minimal:Minimal thinking'
+  'low:Low thinking'
+  'medium:Medium thinking'
+  'high:High thinking'
+  'xhigh:Extra high thinking'
+  'max:Maximum thinking'
+)
+
+# ── Output modes ──────────────────────────────────────────────────────
+local -a _pi_modes
+_pi_modes=(
+  'text:Interactive mode (default)'
+  'json:Output events as JSON lines'
+  'rpc:RPC mode for process integration'
+)
+
+# ── Subcommands ───────────────────────────────────────────────────────
+local -a _pi_subcommands
+_pi_subcommands=(
+  'install:Install extension source and add to settings'
+  'remove:Remove extension source from settings'
+  'uninstall:Alias for remove'
+  'update:Update pi, extensions, or model catalogs'
+  'list:List installed extensions from settings'
+  'config:Open TUI to enable/disable package resources'
+)
+
+# ── Main completion function ──────────────────────────────────────────
+_pi() {
+  local curcontext="$curcontext" state state_descr line
+  typeset -A opt_args
+
+  _arguments -C -S \
+    '(- *)'{-h,--help}'[Show help]' \
+    '(- *)'{-v,--version}'[Show version number]' \
+    '1: :->first' \
+    '*:: :->rest' \
+    && return 0
+
+  case "$state" in
+    first)
+      _describe -t commands 'subcommand' _pi_subcommands
+      _pi_global_flags
+      _files -P '@' -S ' '
+      ;;
+    rest)
+      local cmd="${line[1]}"
+      case "$cmd" in
+        install)   _pi_install ;;
+        remove)    _pi_remove ;;
+        uninstall) _pi_remove ;;
+        update)    _pi_update ;;
+        list)      _pi_global_flags ;;
+        config)    _pi_config ;;
+        *)
+          _pi_global_flags
+          _files -P '@' -S ' '
+          _files
+          ;;
+      esac
+      ;;
+  esac
+}
+
+# ── Global flags (shared across all contexts) ─────────────────────────
+_pi_global_flags() {
+  local curcontext="$curcontext" state state_descr line
+  typeset -A opt_args
+
+  _arguments -C -S \
+    '--provider[Provider name]:provider:->providers' \
+    '--model[Model pattern or ID]:model:' \
+    '--api-key[API key]:key:' \
+    '--system-prompt[Replace default system prompt]:text:' \
+    '--append-system-prompt[Append text or file to system prompt]:text:' \
+    '--mode[Output mode]:mode:->modes' \
+    {-p,--print}'[Non-interactive mode: process prompt and exit]' \
+    {-c,--continue}'[Continue most recent session]' \
+    {-r,--resume}'[Browse and select a session to resume]' \
+    '--session[Use specific session file or partial UUID]:file:_files' \
+    '--session-id[Use exact project session ID]:id:' \
+    '--fork[Fork session into new session]:file:_files' \
+    '--session-dir[Directory for session storage]:dir:_files -/' \
+    '--no-session[Do not save session (ephemeral)]' \
+    {-n,--name}'[Set session display name]:name:' \
+    '--models[Comma-separated model patterns for Ctrl+P cycling]:patterns:' \
+    {-nt,--no-tools}'[Disable all tools by default]' \
+    {-nbt,--no-builtin-tools}'[Disable built-in tools, keep extension tools]' \
+    {-t,--tools}'[Allowlist specific tool names]:tool:->tools' \
+    {-xt,--exclude-tools}'[Denylist specific tool names]:tool:->tools' \
+    '--thinking[Set thinking level]:level:->thinking_levels' \
+    {-e,--extension}'[Load extension from path, npm, or git]:file:_files' \
+    {-ne,--no-extensions}'[Disable extension discovery]' \
+    '--skill[Load a skill file or directory]:path:_files' \
+    {-ns,--no-skills}'[Disable skills discovery]' \
+    '--prompt-template[Load a prompt template]:path:_files' \
+    {-np,--no-prompt-templates}'[Disable prompt template discovery]' \
+    '--theme[Load a theme]:path:_files' \
+    '--no-themes[Disable theme discovery]' \
+    {-nc,--no-context-files}'[Disable AGENTS.md and CLAUDE.md discovery]' \
+    '--export[Export session to HTML]:session file:_files' \
+    '--list-models[List available models with optional search]:search term:' \
+    '--verbose[Force verbose startup]' \
+    {-a,--approve}'[Trust project-local files for this run]' \
+    {-na,--no-approve}'[Ignore project-local files for this run]' \
+    '--offline[Disable startup network operations]' \
+    '*: :_files'
+
+  case "$state" in
+    providers)       _describe 'provider' _pi_providers ;;
+    modes)           _describe 'mode' _pi_modes ;;
+    thinking_levels) _describe 'thinking level' _pi_thinking_levels ;;
+    tools)           _describe 'tool' _pi_tools ;;
+  esac
+}
+
+# ── pi install <source> [-l] ────────────────────────────────────────
+_pi_install() {
+  _arguments -S \
+    '(-l)--local[Install to project-local directory]' \
+    {-h,--help}'[Show help]' \
+    '1:source (npm/git/url):'
+}
+
+# ── pi remove/uninstall <source> [-l] ───────────────────────────────
+_pi_remove() {
+  _arguments -S \
+    '(-l)--local[Remove from project-local directory]' \
+    {-h,--help}'[Show help]' \
+    '1:package source:'
+}
+
+# ── pi update [flags] [source] ──────────────────────────────────────
+_pi_update() {
+  _arguments -S \
+    '--all[Update pi and all packages]' \
+    '--extensions[Update packages only]' \
+    '--models[Refresh model catalogs only]' \
+    '--self[Update pi only]' \
+    '--force[Reinstall pi even if current]' \
+    {-h,--help}'[Show help]' \
+    '1:source:'
+}
+
+# ── pi config [-l] ──────────────────────────────────────────────────
+_pi_config() {
+  _arguments -S \
+    '(-l)--local[Edit project-local settings]' \
+    {-h,--help}'[Show help]'
+}
+
+_pi "$@"

@@ -4,6 +4,7 @@
   fetchurl,
   versionCheckHook,
   writableTmpDirAsHomeHook,
+  installShellFiles,
   ripgrep,
   fd,
   makeBinaryWrapper,
@@ -28,6 +29,7 @@ buildNpmPackage (finalAttrs: {
   npmRebuildFlags = [ "--ignore-scripts" ];
 
   nativeBuildInputs = [
+    installShellFiles
     makeBinaryWrapper
   ];
 
@@ -67,6 +69,9 @@ buildNpmPackage (finalAttrs: {
 
     # Clean up now-dangling .bin symlinks
     find "$nm/.bin" -xtype l -delete
+
+    # Install zsh shell completion
+    installShellCompletion --zsh --name _pi ${./pi.zsh-completion}
   ''
   + lib.optionalString stdenvNoCC.hostPlatform.isDarwin ''
     # Remove foreign Linux binaries that make audit-tmpdir try to inspect ELF
