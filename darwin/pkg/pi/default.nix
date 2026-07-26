@@ -1,7 +1,7 @@
 {
   lib,
   buildNpmPackage,
-  fetchurl,
+  fetchFromGitHub,
   versionCheckHook,
   writableTmpDirAsHomeHook,
   installShellFiles,
@@ -14,14 +14,16 @@
 
 buildNpmPackage (finalAttrs: {
   pname = "pi";
-  version = "0.82.0";
+  version = "0.82.1";
 
-  src = fetchurl {
-    url = "https://github.com/earendil-works/pi/archive/refs/tags/v${finalAttrs.version}.tar.gz";
-    hash = "sha256-RAV68003dB4eexqNUEGyzKnKa6RvqgxL2Fquyg6SpA4=";
+  src = fetchFromGitHub {
+    owner = "earendil-works";
+    repo = "pi";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-LESpgd/KUoNqdBfnd1oyMN8coKm0Odbo9GYkUDry8Zk=";
   };
 
-  npmDepsHash = "sha256-3oqrN/uguYfkUHlfmKGxnLIvUo484IMGlydz6p9o/Dw=";
+  npmDepsHash = "sha256-5pHRwxpKg95/phOcYHeWdvPJNtSOhiw7PRoVxsuh0RM=";
 
   npmWorkspace = "packages/coding-agent";
 
