@@ -105,7 +105,7 @@ _pi() {
     first)
       _describe -t commands 'subcommand' _pi_subcommands
       _pi_global_flags
-      _files -P '@' -S ' '
+      [[ $words[$CURRENT] == @* ]] && _files -P '@' -S ' '
       ;;
     rest)
       local cmd="${line[1]}"
@@ -118,8 +118,7 @@ _pi() {
         config)    _pi_config ;;
         *)
           _pi_global_flags
-          _files -P '@' -S ' '
-          _files
+          [[ $words[$CURRENT] == @* ]] && _files -P '@' -S ' '
           ;;
       esac
       ;;
@@ -167,8 +166,7 @@ _pi_global_flags() {
     '--verbose[Force verbose startup]' \
     {-a,--approve}'[Trust project-local files for this run]' \
     {-na,--no-approve}'[Ignore project-local files for this run]' \
-    '--offline[Disable startup network operations]' \
-    '*: :_files'
+    '--offline[Disable startup network operations]'
 
   case "$state" in
     providers)       _describe 'provider' _pi_providers ;;
