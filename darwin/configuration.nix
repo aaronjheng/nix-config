@@ -249,7 +249,7 @@
     (callPackage ./pkg/kafka-cli { })
     kubectl
     mediainfo
-    # mitmproxy
+    mitmproxy
     mysql-shell_8
     nmap
     nix-update
@@ -266,7 +266,7 @@
     pyright
     ripgrep
     (callPackage ./pkg/redis-cli { })
-    # rtk
+    rtk
     ruff
     rust-analyzer
     skills
