@@ -105,7 +105,11 @@ _pi() {
     first)
       _describe -t commands 'subcommand' _pi_subcommands
       _pi_global_flags
-      [[ $words[$CURRENT] == @* ]] && _files -P '@' -S ' '
+      if [[ $words[$CURRENT] == @* ]]; then
+        _files -P '@' -S ' '
+      else
+        _message 'message or @file'
+      fi
       ;;
     rest)
       local cmd="${line[1]}"
@@ -118,7 +122,11 @@ _pi() {
         config)    _pi_config ;;
         *)
           _pi_global_flags
-          [[ $words[$CURRENT] == @* ]] && _files -P '@' -S ' '
+          if [[ $words[$CURRENT] == @* ]]; then
+            _files -P '@' -S ' '
+          else
+            _message 'message or @file'
+          fi
           ;;
       esac
       ;;
