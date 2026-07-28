@@ -3,7 +3,9 @@
   lib,
   ...
 }:
-
+let
+  ollama-bin = pkgs.callPackage ./pkg/ollama-bin { };
+in
 {
   imports = [
     <darwin-variant>
@@ -12,6 +14,7 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
+  system.primaryUser = "aaron";
 
   documentation.enable = false;
   system.tools.darwin-uninstaller.enable = false;
@@ -103,7 +106,7 @@
     chezmoi-update = {
       serviceConfig = {
         ProgramArguments = [
-          "/etc/profiles/per-user/aaron/bin/chezmoi"
+          "${pkgs.chezmoi}/bin/chezmoi"
           "update"
           "--apply"
         ];
@@ -133,7 +136,7 @@
         };
 
         ProgramArguments = [
-          "/etc/profiles/per-user/aaron/bin/clash"
+          "${pkgs.clash-rs}/bin/clash"
           "-f"
           "/Users/aaron/.config/clash/config.yaml"
           "-d"
@@ -163,7 +166,7 @@
         };
 
         ProgramArguments = [
-          "/etc/profiles/per-user/aaron/bin/clipaste"
+          "${pkgs.clipaste}/bin/clipaste"
         ];
 
         RunAtLoad = true;
@@ -176,7 +179,7 @@
     ollama = {
       serviceConfig = {
         ProgramArguments = [
-          "/etc/profiles/per-user/aaron/bin/ollama"
+          "${ollama-bin}/bin/ollama"
           "serve"
         ];
 
@@ -256,7 +259,7 @@
     nixd
     nixfmt
     oath-toolkit
-    (callPackage ./pkg/ollama-bin { })
+    ollama-bin
     opencode
     (callPackage ./pkg/pi { })
     pnpm_10

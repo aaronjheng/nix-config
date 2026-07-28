@@ -5,5 +5,4 @@
   networking.hostName = "aarons-work";
   networking.localHostName = "aarons-work";
 
-  system.primaryUser = "aaron";
 }
