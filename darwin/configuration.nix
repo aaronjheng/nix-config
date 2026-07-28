@@ -274,6 +274,7 @@
     swiftlint
     teleport
     temporal-cli
+    ty
     typescript-language-server
     uv
     viu
