@@ -19,7 +19,7 @@ buildNpmPackage (finalAttrs: {
   src = fetchFromGitHub {
     owner = "earendil-works";
     repo = "pi";
-    rev = "v${finalAttrs.version}";
+    tag = "v${finalAttrs.version}";
     hash = "sha256-LESpgd/KUoNqdBfnd1oyMN8coKm0Odbo9GYkUDry8Zk=";
   };
 
