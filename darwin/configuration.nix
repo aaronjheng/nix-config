@@ -264,7 +264,6 @@ in
     (callPackage ./pkg/pi { })
     pnpm_10
     postgresql
-    python3
     python3Packages.ipython
     pyright
     ripgrep
