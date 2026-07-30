@@ -261,7 +261,7 @@ in
     oath-toolkit
     ollama-bin
     opencode
-    (callPackage ./pkg/pi { })
+    pi-coding-agent
     pnpm_10
     postgresql
     python3Packages.ipython
