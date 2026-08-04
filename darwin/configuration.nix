@@ -59,6 +59,7 @@ in
     tmux
     vim
     zsh-completions
+    (callPackage ./pkg/skeleton-viewer { })
   ];
 
   fonts.packages = with pkgs; [
