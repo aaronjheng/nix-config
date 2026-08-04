@@ -227,7 +227,6 @@ in
     claude-code
     clipaste
     codex
-    crush
     cue
     diffoscope
     duckdb
