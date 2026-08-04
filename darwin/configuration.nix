@@ -226,7 +226,6 @@ in
     clash-rs
     claude-code
     clipaste
-    codex
     cue
     diffoscope
     duckdb
