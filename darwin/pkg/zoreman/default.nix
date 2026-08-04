@@ -15,13 +15,13 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "135ebe949be528ab36d9c751d8434feac69cd1d5";
-    hash = "sha256-2pmkDBTXqBX8QZXKDXz6f2kwf7FfKmCDLVR5hgfgwwo=";
+    rev = "abfadd8293c8fc7ea1789961c122f340385d425d";
+    hash = "sha256-m7NNnqjMy9ZhmbeOljOjXCbLQ7JZ+ObW53Zfa6oi9sw=";
   };
 
   zigDeps = zig.fetchDeps {
     inherit (finalAttrs) src pname version;
-    hash = "sha256-dNd20PL0VzOtTZRIOjMj4NMXOaSA31tV18e8T51+wHw=";
+    hash = "sha256-+c6F5Wee646mzgk8AEXvYqcF/HBGnUtFSQ3FS+80fFk=";
   };
 
   postConfigure = ''
