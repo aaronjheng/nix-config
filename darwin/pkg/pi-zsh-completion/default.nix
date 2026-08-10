@@ -6,7 +6,7 @@
 
 stdenvNoCC.mkDerivation {
   pname = "pi-zsh-completion";
-  version = "0.83.0";
+  version = "1.0.0";
 
   dontUnpack = true;
 

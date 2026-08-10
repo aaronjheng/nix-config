@@ -13,11 +13,11 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "eb45065b5b25a66d0891eee476f4eb7446d3de11";
-    hash = "sha256-p6WFqdJgubKpMypMVGInSVg1Q4WRhxQwTCrlUfSJtZ8=";
+    rev = "12d06e0efdbe31ea1cb3ced4014841f16240535f";
+    hash = "sha256-vuasrgkW2IqVuY69afSZf34jN1F6ik/m80VW07/niVY=";
   };
 
-  vendorHash = "sha256-5uJMbIXE+0ygOCVdBdcu3WNubXIoCtbCjB6pz+SiqsI=";
+  vendorHash = "sha256-adEJUWZFSNUJkiX2BCYx7ouZEOLotZZjIgqJPzRHu8I=";
 
   nativeBuildInputs = [
     installShellFiles
