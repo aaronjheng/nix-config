@@ -25,6 +25,11 @@ in
     allowUnfree = true;
   };
 
+  system.defaults.finder = {
+    AppleShowAllExtensions = true; # 显示所有文件扩展名
+    ShowPathbar = true; # 显示路径栏
+  };
+
   security.sudo.extraConfig = ''
     %admin       ALL=(ALL) NOPASSWD: ALL
 
