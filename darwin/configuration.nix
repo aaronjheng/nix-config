@@ -3,9 +3,6 @@
   lib,
   ...
 }:
-let
-  ollama-bin = pkgs.callPackage ./pkg/ollama-bin { };
-in
 {
   imports = [
     <darwin-variant>
@@ -180,26 +177,6 @@ in
         StandardErrorPath = "/Users/aaron/Library/Logs/clipaste.log";
       };
     };
-
-    ollama = {
-      serviceConfig = {
-        ProgramArguments = [
-          "${ollama-bin}/bin/ollama"
-          "serve"
-        ];
-
-        EnvironmentVariables = {
-          OLLAMA_FLASH_ATTENTION = "1";
-          OLLAMA_KEEP_ALIVE = "30m";
-          OLLAMA_KV_CACHE_TYPE = "q8_0";
-        };
-
-        RunAtLoad = true;
-
-        StandardOutPath = "/Users/aaron/Library/Logs/ollama.log";
-        StandardErrorPath = "/Users/aaron/Library/Logs/ollama.log";
-      };
-    };
   };
 
   programs.zsh = {
@@ -263,7 +240,6 @@ in
     nixd
     nixfmt
     oath-toolkit
-    ollama-bin
     opencode
     pi-coding-agent
     (callPackage ./pkg/pi-zsh-completion { })
