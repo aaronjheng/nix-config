@@ -245,7 +245,6 @@
     (callPackage ./pkg/pi-zsh-completion { })
     pnpm_10
     postgresql
-    python3Packages.ipython
     ripgrep
     (callPackage ./pkg/redis-cli { })
     rtk
