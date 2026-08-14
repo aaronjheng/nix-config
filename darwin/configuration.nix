@@ -233,7 +233,6 @@
     (callPackage ./pkg/kafka-cli { })
     kubectl
     mediainfo
-    mitmproxy
     mysql-shell_8
     nmap
     nix-update
