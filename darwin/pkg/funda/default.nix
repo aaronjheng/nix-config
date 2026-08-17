@@ -11,11 +11,11 @@ buildGoModule (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "funda";
-    rev = "c11c2a84107ec0fd9ad690ee2dbbf2b73389a495";
-    hash = "sha256-71WxprugbJkcT+7u4eyj106XZ4YgDMZNgT2x61PnSh0=";
+    rev = "1a94eeb48f88b38651395802a9d97bedf852eafb";
+    hash = "sha256-Y7LIsrEgEBdk9MrTh0c5XDbie0JNpJzaTlSgC1deSGA=";
   };
 
-  vendorHash = "sha256-tJBy93r/CaD5JP6SEUjRa7GAUbYYKUwJxIiAH9RSzRg=";
+  vendorHash = "sha256-ERixFbDbBXiBMCOnnioEfchfWQ+SRJVECLAqof5/KxY=";
 
   ldflags = [
     "-s"
