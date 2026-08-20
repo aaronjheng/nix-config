@@ -226,6 +226,7 @@
     gopls
     hunk
     imagemagick
+    jd-diff-patch
     jujutsu
     just
     just-lsp
