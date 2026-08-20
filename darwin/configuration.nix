@@ -232,6 +232,7 @@
     k6
     (callPackage ./pkg/kafka-cli { })
     kubectl
+    mcp-grafana
     mediainfo
     mysql-shell_8
     nmap
