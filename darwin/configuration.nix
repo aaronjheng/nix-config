@@ -207,13 +207,14 @@
     clash-rs
     claude-code
     clipaste
+    codex
     cue
     diffoscope
     duckdb
     dust
     duf
     fd
-    ffmpeg
+    (ffmpeg.override { withVmaf = true; }) # libvmaf 视频质量评估
     file
     (callPackage ./pkg/funda { })
     gcx
