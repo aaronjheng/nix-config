@@ -4,17 +4,18 @@
   buildGoModule,
   fetchFromGitHub,
   installShellFiles,
+  go_1_27,
 }:
 
-buildGoModule (finalAttrs: {
+(buildGoModule.override { go = go_1_27; }) (finalAttrs: {
   pname = "redis-cli";
   version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "031dbdf72e2b077db0c4a887a7893cea21537ebc";
-    hash = "sha256-OW4yDBGxyMq02ZjEFj2GyHJZt7dVaDPmuJ/wMJ+DgcI=";
+    rev = "322fe665c7811c6e1d1819ed8faa43f756a996d2";
+    hash = "sha256-6IBFrlQZ10SMsLx85eToCS/TOVLzcJgPJXHHXnaIQiE=";
   };
 
   vendorHash = "sha256-AfyA4N2EtdgMNcCrg9d633cRBNtrZM3oew//MwJ17mY=";

@@ -4,17 +4,18 @@
   buildGoModule,
   fetchFromGitHub,
   installShellFiles,
+  go_1_27,
 }:
 
-buildGoModule (finalAttrs: {
+(buildGoModule.override { go = go_1_27; }) (finalAttrs: {
   pname = "kafka-cli";
   version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "kafka-cli";
-    rev = "a92a5388b4714a0a6b7601e6dd5c22d7ad63f24d";
-    hash = "sha256-oaL7XgBmG73nnXH4oQnKXehcDqWk4PSj0mE0EgyhbJU=";
+    rev = "5a47b7363be6d5bd96ad343c0661a76b78d3f94f";
+    hash = "sha256-aKrpT+YhIeD8n8v8efWqhIRmTWmR39uR8AXXsxjCDz4=";
   };
 
   vendorHash = "sha256-0CqsGGV2t13sDknXQU7fPHurKOgRLEtGnXBWAI3WcmY=";
