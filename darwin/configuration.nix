@@ -214,7 +214,7 @@
     dust
     duf
     fd
-    (ffmpeg.override { withVmaf = true; }) # libvmaf 视频质量评估
+    ffmpeg
     file
     (callPackage ./pkg/funda { })
     gcx

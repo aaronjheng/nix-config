@@ -2,20 +2,21 @@
   lib,
   buildGoModule,
   fetchFromGitHub,
+  go_1_27,
 }:
 
-buildGoModule (finalAttrs: {
+(buildGoModule.override { go = go_1_27; }) (finalAttrs: {
   pname = "funda";
   version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "funda";
-    rev = "1a94eeb48f88b38651395802a9d97bedf852eafb";
-    hash = "sha256-Y7LIsrEgEBdk9MrTh0c5XDbie0JNpJzaTlSgC1deSGA=";
+    rev = "413659ed541c28bc51454cbe158821a937073725";
+    hash = "sha256-XlhaQKltiSuARibQr7MTEc0wxnE695aEOWZzW3KZ4Ao=";
   };
 
-  vendorHash = "sha256-ERixFbDbBXiBMCOnnioEfchfWQ+SRJVECLAqof5/KxY=";
+  vendorHash = "sha256-0IcwkgEaaXCSlziUm6fbcAlDakYDwkJ/Webkfo94ZV8=";
 
   ldflags = [
     "-s"
