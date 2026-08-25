@@ -58,7 +58,7 @@
     less
     lsof
     rsync
-    tmux
+    # tmux
     vim
     zsh-completions
   ];
