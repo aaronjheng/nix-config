@@ -27,6 +27,10 @@
     ShowPathbar = true; # 显示路径栏
   };
 
+  system.defaults.CustomUserPreferences."com.apple.GameController" = {
+    bluetoothPrefsMenuLongPressAction = false;
+  };
+
   security.sudo.extraConfig = ''
     %admin       ALL=(ALL) NOPASSWD: ALL
 

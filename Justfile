@@ -68,7 +68,7 @@ upgrade: update rebuild rebuild-dotfiles
 [macos]
 upgrade-nix:
     sudo -i nix upgrade-nix
-    sudo launchctl stop org.nixos.nix-daemon && sudo launchctl start org.nixos.nix-daemon
+    sudo launchctl kickstart -k system/org.nixos.nix-daemon
 
 [macos]
 uninstall-darwin:
