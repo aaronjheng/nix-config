@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }:
 {
@@ -23,8 +24,26 @@
   };
 
   system.defaults.finder = {
-    AppleShowAllExtensions = true; # 显示所有文件扩展名
-    ShowPathbar = true; # 显示路径栏
+    AppleShowAllExtensions = true; # Show all filename extensions
+    ShowPathbar = true; # Show the path bar
+  };
+
+  # System Settings → Trackpad → Point & Click: enable tap to click.
+  # macOS writes two keys when this toggle is clicked; mirror both so behavior
+  # and the UI toggle display stay consistent:
+  # - `Clicking` (AppleMultitouchTrackpad + Bluetooth domains): read by the driver;
+  # - `com.apple.mouse.tapBehavior` (per-host ByHost domain): read by the UI toggle.
+  system.defaults.trackpad.Clicking = true;
+  system.defaults.CustomUserPreferences."~${config.system.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
+    "com.apple.mouse.tapBehavior" = 1;
+  };
+
+  # System Settings → Accessibility → Pointer Control → Trackpad Options:
+  # enable dragging with the three-finger drag style
+  system.defaults.trackpad = {
+    Dragging = true; # Check "Enable dragging"
+    DragLock = false; # Do not use the "with drag lock" style
+    TrackpadThreeFingerDrag = true; # Dragging style: three finger drag
   };
 
   system.defaults.CustomUserPreferences."com.apple.GameController" = {
