@@ -14,8 +14,8 @@
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "bfda2815d69c02ba677d51c6348297b1fa45b028";
-    hash = "sha256-prMjXYOLBYQJ8Bu27WRxLAOujxU6YV11bXX4sorRuKk=";
+    rev = "87a853d6ab8c081d99bd0f6efe5363a59ebb3ccb";
+    hash = "sha256-bAP4qYhgMknxW3bQ75aVWY2d7Aonjrzo7OW2brF09zc=";
   };
 
   vendorHash = "sha256-PVC/ilUX8nUlSmDgbYnRj66qxgXjDFKdYRRzzreIQOw=";
