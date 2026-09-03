@@ -9,6 +9,12 @@
     <darwin-variant>
   ];
 
+  nix.enable = false;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
@@ -16,12 +22,6 @@
 
   documentation.enable = false;
   system.tools.darwin-uninstaller.enable = false;
-
-  nix.enable = false;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   system.defaults.finder = {
     AppleShowAllExtensions = true; # Show all filename extensions
