@@ -15,12 +15,13 @@
     allowUnfree = true;
   };
 
+  documentation.enable = false;
+
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 6;
   system.primaryUser = "aaron";
 
-  documentation.enable = false;
   system.tools.darwin-uninstaller.enable = false;
 
   system.defaults.finder = {
