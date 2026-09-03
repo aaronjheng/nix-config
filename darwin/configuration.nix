@@ -34,9 +34,10 @@
   # - `Clicking` (AppleMultitouchTrackpad + Bluetooth domains): read by the driver;
   # - `com.apple.mouse.tapBehavior` (per-host ByHost domain): read by the UI toggle.
   system.defaults.trackpad.Clicking = true;
-  system.defaults.CustomUserPreferences."~${config.system.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" = {
-    "com.apple.mouse.tapBehavior" = 1;
-  };
+  system.defaults.CustomUserPreferences."~${config.system.primaryUser}/Library/Preferences/ByHost/.GlobalPreferences" =
+    {
+      "com.apple.mouse.tapBehavior" = 1;
+    };
 
   # System Settings → Accessibility → Pointer Control → Trackpad Options:
   # enable dragging with the three-finger drag style
@@ -257,7 +258,6 @@
     k6
     (callPackage ./pkg/kafka-cli { })
     kubectl
-    mcp-grafana
     mediainfo
     mysql-shell_8
     nmap
