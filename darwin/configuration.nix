@@ -221,7 +221,7 @@
 
   users.users.aaron.packages = with pkgs; [
     _7zz
-    alloy
+    grafana-alloy
     atuin
     awscli2
     bat
