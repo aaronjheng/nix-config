@@ -221,6 +221,7 @@
 
   users.users.aaron.packages = with pkgs; [
     _7zz
+    alloy
     atuin
     awscli2
     bat
@@ -234,7 +235,7 @@
     clipaste
     codex
     cue
-    diffoscope
+    # diffoscope
     duckdb
     dust
     duf
