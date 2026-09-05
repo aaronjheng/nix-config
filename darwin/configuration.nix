@@ -29,6 +29,18 @@
     ShowPathbar = true; # Show the path bar
   };
 
+  # Save screenshots and screen recordings to ~/Pictures/Screenshots.
+  # The value must be an absolute path; ~ in the plist is not expanded.
+  system.defaults.screencapture.location =
+    "/Users/${config.system.primaryUser}/Pictures/Screenshots";
+
+  # Make sure the screenshot save directory exists and is owned by the user
+  # (activation runs as root, so chown is needed after mkdir).
+  system.activationScripts.preActivation.text = ''
+    mkdir -p "/Users/${config.system.primaryUser}/Pictures/Screenshots"
+    chown "${config.system.primaryUser}" "/Users/${config.system.primaryUser}/Pictures/Screenshots"
+  '';
+
   # System Settings → Trackpad → Point & Click: enable tap to click.
   # macOS writes two keys when this toggle is clicked; mirror both so behavior
   # and the UI toggle display stay consistent:
@@ -125,8 +137,8 @@
           Minute = 1;
         };
 
-        StandardOutPath = "/Users/aaron/Library/Logs/brew-cleanup.log";
-        StandardErrorPath = "/Users/aaron/Library/Logs/brew-cleanup.log";
+        StandardOutPath = "/Users/${config.system.primaryUser}/Library/Logs/brew-cleanup.log";
+        StandardErrorPath = "/Users/${config.system.primaryUser}/Library/Logs/brew-cleanup.log";
       };
     };
 
@@ -143,8 +155,8 @@
           Minute = 1;
         };
 
-        StandardOutPath = "/Users/aaron/Library/Logs/chezmoi-update.log";
-        StandardErrorPath = "/Users/aaron/Library/Logs/chezmoi-update.log";
+        StandardOutPath = "/Users/${config.system.primaryUser}/Library/Logs/chezmoi-update.log";
+        StandardErrorPath = "/Users/${config.system.primaryUser}/Library/Logs/chezmoi-update.log";
       };
     };
 
@@ -165,16 +177,16 @@
         ProgramArguments = [
           "${pkgs.clash-rs}/bin/clash"
           "-f"
-          "/Users/aaron/.config/clash/config.yaml"
+          "/Users/${config.system.primaryUser}/.config/clash/config.yaml"
           "-d"
-          "/Users/aaron/.local/state/clash"
+          "/Users/${config.system.primaryUser}/.local/state/clash"
         ];
 
         KeepAlive = true;
         RunAtLoad = true;
 
-        StandardOutPath = "/Users/aaron/Library/Logs/clash.log";
-        StandardErrorPath = "/Users/aaron/Library/Logs/clash.log";
+        StandardOutPath = "/Users/${config.system.primaryUser}/Library/Logs/clash.log";
+        StandardErrorPath = "/Users/${config.system.primaryUser}/Library/Logs/clash.log";
       };
     };
 
@@ -198,8 +210,8 @@
 
         RunAtLoad = true;
 
-        StandardOutPath = "/Users/aaron/Library/Logs/clipaste.log";
-        StandardErrorPath = "/Users/aaron/Library/Logs/clipaste.log";
+        StandardOutPath = "/Users/${config.system.primaryUser}/Library/Logs/clipaste.log";
+        StandardErrorPath = "/Users/${config.system.primaryUser}/Library/Logs/clipaste.log";
       };
     };
   };
