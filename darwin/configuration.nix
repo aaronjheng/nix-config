@@ -31,8 +31,7 @@
 
   # Save screenshots and screen recordings to ~/Pictures/Screenshots.
   # The value must be an absolute path; ~ in the plist is not expanded.
-  system.defaults.screencapture.location =
-    "/Users/${config.system.primaryUser}/Pictures/Screenshots";
+  system.defaults.screencapture.location = "/Users/${config.system.primaryUser}/Pictures/Screenshots";
 
   # Make sure the screenshot save directory exists and is owned by the user
   # (activation runs as root, so chown is needed after mkdir).
@@ -284,6 +283,7 @@
     (callPackage ./pkg/pi-zsh-completion { })
     pnpm_10
     postgresql
+    pyright
     ripgrep
     (callPackage ./pkg/redis-cli { })
     rtk
@@ -295,6 +295,7 @@
     teleport
     temporal-cli
     ty
+    typescript-language-server
     uv
     viu
     xh
