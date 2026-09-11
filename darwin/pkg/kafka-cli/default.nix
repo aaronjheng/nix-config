@@ -14,8 +14,8 @@
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "kafka-cli";
-    rev = "21559d0d36c29eba2391c059bf2da1589d103e4b";
-    hash = "sha256-7nPeKZsJgblvASFSbjqTpPbezL19J44LCQaDm7y52Cs=";
+    rev = "81d76cbe66baac6a6568bb6903e480bd2ee2fe7b";
+    hash = "sha256-WrgeITzkEHqQ0kuU68omIwTdlKMfL9Q+vJRj2/uGl5Y=";
   };
 
   vendorHash = "sha256-6teEskNiGmfc6+iG4iXL/RM96pmxX78Xhv6QrRornrw=";
