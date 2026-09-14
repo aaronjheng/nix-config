@@ -278,7 +278,9 @@
     nixd
     nixfmt
     oath-toolkit
-    opencode
+    (opencode.overrideAttrs (old: {
+      patches = (old.patches or [ ]) ++ [ ./pkg/opencode/fix-filesystem-search-cycle.patch ];
+    }))
     pi-coding-agent
     (callPackage ./pkg/pi-zsh-completion { })
     pnpm_10
