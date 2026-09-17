@@ -14,11 +14,11 @@
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "kafka-cli";
-    rev = "81d76cbe66baac6a6568bb6903e480bd2ee2fe7b";
-    hash = "sha256-WrgeITzkEHqQ0kuU68omIwTdlKMfL9Q+vJRj2/uGl5Y=";
+    rev = "9af0b5f35dd550967e90547e2250f85e9f781410";
+    hash = "sha256-QY9IA9lY1LjmXYVDSHYnXTT8dmBN4Rlx+5BKJUSmENc=";
   };
 
-  vendorHash = "sha256-6teEskNiGmfc6+iG4iXL/RM96pmxX78Xhv6QrRornrw=";
+  vendorHash = "sha256-PUCsrNq5RZ8sqZeYY/cDpg7bI/dn4gPbzIaKPJBrbjo=";
 
   excludedPackages = [
     "test"
