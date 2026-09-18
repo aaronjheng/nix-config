@@ -244,9 +244,8 @@
     clash-rs
     claude-code
     clipaste
-    codex
     cue
-    # diffoscope
+    diffoscope
     duckdb
     dust
     duf
