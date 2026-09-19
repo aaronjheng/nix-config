@@ -252,7 +252,6 @@
     fd
     ffmpeg
     file
-    (callPackage ./pkg/funda { })
     gcx
     gh
     ghostscript
