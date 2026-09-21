@@ -286,7 +286,6 @@
     pyright
     ripgrep
     (callPackage ./pkg/redis-cli { })
-    rtk
     ruff
     rust-analyzer
     skills
