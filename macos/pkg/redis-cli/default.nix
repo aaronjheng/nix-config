@@ -14,11 +14,11 @@
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "redis-cli";
-    rev = "51bd2c9cdaa2b5fbcdcd3f2e9baf396c52d997b0";
-    hash = "sha256-ZXfgkeOGzLbR1uyDgS2lDboU/+ATO0OF/6SUhVknObE=";
+    rev = "187c98f75960c612996a3532e0761618c28cc564";
+    hash = "sha256-8YgQAr7kNBoqC3b1EPY45ToWDRnrWwroz64n3whFqWw=";
   };
 
-  vendorHash = "sha256-5HzVs7cpEMHp6ZYyP1MlknWohtslUdJIekkFF/E7xgc=";
+  vendorHash = "sha256-J/T7fEP8KyD5guiQETqIwY1Vg/cMbJbrkUCF5RlWncc=";
 
   nativeBuildInputs = [
     installShellFiles
