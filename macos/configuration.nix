@@ -7,6 +7,7 @@
 {
   imports = [
     <darwin-variant>
+    ./module/power.nix
   ];
 
   nix.enable = false;
