@@ -5,4 +5,6 @@
   networking.hostName = "aarons-air";
   networking.localHostName = "aarons-air";
 
+  power.preventAutomaticSleepingOnPowerAdapter = true;
+
 }
