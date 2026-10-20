@@ -4,6 +4,7 @@
   fetchFromGitHub,
   zig_0_16,
   testers,
+  installShellFiles,
 }:
 let
   zig = zig_0_16;
@@ -15,8 +16,8 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "dfcd7f820c9849dd1e62bd85cd0b76ddd3457fc6";
-    hash = "sha256-VDV8SxLZtK9VPb5jAjfWUG2Q48TZQymmYCvt0ngUQy8=";
+    rev = "0f188166671d50640a348f2b45ce0ff8229e026a";
+    hash = "sha256-fZj2EOn/vBqQfTfDy+OOtxI9BIBG4yd+bkg0SmpiO48=";
   };
 
   zigDeps = zig.fetchDeps {
@@ -30,7 +31,15 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     zig.hook
+    installShellFiles
   ];
+
+  postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+    installShellCompletion --cmd zoreman \
+      --bash <($out/bin/zoreman completion bash) \
+      --zsh <($out/bin/zoreman completion zsh) \
+      --fish <($out/bin/zoreman completion fish)
+  '';
 
   passthru.tests.version = testers.testVersion {
     package = finalAttrs.finalPackage;
