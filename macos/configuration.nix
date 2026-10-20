@@ -247,6 +247,7 @@
     clipaste
     cue
     diffoscope
+    dingtalk-workspace-cli
     duckdb
     dust
     duf
