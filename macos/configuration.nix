@@ -247,7 +247,13 @@
     clipaste
     cue
     diffoscope
-    dingtalk-workspace-cli
+    # Temporary: fix shell completions — pre-parse rejects cobra's hidden
+    # __complete command (upstream bug; patch from dws fix branch).
+    (dingtalk-workspace-cli.overrideAttrs (oldAttrs: {
+      patches = (oldAttrs.patches or [ ]) ++ [
+        ./pkg/dingtalk-workspace-cli/reserved-completion-commands.patch
+      ];
+    }))
     duckdb
     dust
     duf
