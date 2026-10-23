@@ -2,12 +2,12 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  zig_0_16,
+  zig_0_17,
   testers,
   installShellFiles,
 }:
 let
-  zig = zig_0_16;
+  zig = zig_0_17;
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "zoreman";
@@ -16,13 +16,13 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "aaronjheng";
     repo = "zoreman";
-    rev = "0f188166671d50640a348f2b45ce0ff8229e026a";
-    hash = "sha256-fZj2EOn/vBqQfTfDy+OOtxI9BIBG4yd+bkg0SmpiO48=";
+    rev = "4b5d41678bd4decd2bd5363d220e218cfc882d67";
+    hash = "sha256-wWUnveKQCRo5UHr+PxBkfi4UVlzHyjvKqZpkHdBcic8=";
   };
 
   zigDeps = zig.fetchDeps {
     inherit (finalAttrs) src pname version;
-    hash = "sha256-3KpDCjZlrPoGfjLhFxbtiyqlWtw2jRv/JYIQ+2yTqWo=";
+    hash = "sha256-XB3NP8oTiqRO4dV5ROlQp7GaplZPpOqS5plnmCO8Djw=";
   };
 
   postConfigure = ''
