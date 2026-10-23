@@ -303,6 +303,7 @@
     typescript-language-server
     uv
     viu
+    wire
     xh
     zig
     zig-shell-completions
