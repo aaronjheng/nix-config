@@ -293,7 +293,8 @@
     ripgrep
     (callPackage ./pkg/redis-cli { })
     ruff
-    rust-analyzer
+    # rust-analyzer
+    rustup
     skills
     socat
     swiftlint
