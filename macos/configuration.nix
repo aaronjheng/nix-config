@@ -81,6 +81,16 @@
     '';
   };
 
+  # claude-code (nixpkgs) bakes in CLAUDE_CODE_CERT_STORE=system, which on
+  # darwin makes Bun read only certs explicitly trusted in the keychain search
+  # list — Apple's built-in roots in
+  # /System/Library/Keychains/SystemRootCertificates.keychain are excluded, so
+  # every public TLS verification fails with UNABLE_TO_GET_ISSUER_CERT_LOCALLY.
+  # "bundled,system" restores the bundled Mozilla roots while still honouring
+  # CAs added to the keychain (corporate proxies etc.).
+  # https://github.com/NixOS/nixpkgs/issues/579204
+  environment.variables.CLAUDE_CODE_CERT_STORE = "bundled,system";
+
   environment.shells = with pkgs; [
     zsh
   ];
@@ -293,8 +303,16 @@
     ripgrep
     (callPackage ./pkg/redis-cli { })
     ruff
-    # rust-analyzer
-    rustup
+    rust-analyzer
+    # rustup ships an `rust-analyzer` proxy that produces a buildEnv
+    # filename collision with the standalone package above; drop the
+    # proxy so rust-analyzer is nix-managed instead of rustup-managed.
+    (rustup.overrideAttrs (oldAttrs: {
+      postInstall = lib.replaceStrings
+        [ " rust-analyzer" ]
+        [ "" ]
+        oldAttrs.postInstall;
+    }))
     skills
     socat
     swiftlint
