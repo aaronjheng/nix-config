@@ -295,7 +295,11 @@
     nixfmt
     oath-toolkit
     opencode
-    pi-coding-agent
+    # Thin wrapper: puts npm (from the nodejs in pi's own nix closure) on
+    # pi's PATH, so no npmCommand setting is needed in
+    # ~/.pi/agent/settings.json. Depends on upstream pi-coding-agent
+    # unchanged, so only this wrapper rebuilds when it changes.
+    (callPackage ./pkg/pi-wrapped { })
     (callPackage ./pkg/pi-zsh-completion { })
     pnpm_10
     postgresql
