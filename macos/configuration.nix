@@ -218,6 +218,7 @@
           "${pkgs.clipaste}/bin/clipaste"
         ];
 
+        KeepAlive = true;
         RunAtLoad = true;
 
         StandardOutPath = "/Users/${config.system.primaryUser}/Library/Logs/clipaste.log";
