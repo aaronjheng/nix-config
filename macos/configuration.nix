@@ -245,7 +245,7 @@
   users.users.aaron.packages = with pkgs; [
     _7zz
     grafana-alloy
-    atuin
+    # atuin
     awscli2
     bat
     bind
@@ -296,12 +296,9 @@
     nixfmt
     oath-toolkit
     opencode
-    # Thin wrapper: puts npm (from the nodejs in pi's own nix closure) on
-    # pi's PATH, so no npmCommand setting is needed in
-    # ~/.pi/agent/settings.json. Depends on upstream pi-coding-agent
-    # unchanged, so only this wrapper rebuilds when it changes.
-    (callPackage ./pkg/pi-wrapped { })
-    (callPackage ./pkg/pi-zsh-completion { })
+    (callPackage ./pkg/pi-wrapped {
+      pi-zsh-completion = callPackage ./pkg/pi-zsh-completion { };
+    })
     pnpm_10
     postgresql
     pyright
@@ -313,10 +310,7 @@
     # filename collision with the standalone package above; drop the
     # proxy so rust-analyzer is nix-managed instead of rustup-managed.
     (rustup.overrideAttrs (oldAttrs: {
-      postInstall = lib.replaceStrings
-        [ " rust-analyzer" ]
-        [ "" ]
-        oldAttrs.postInstall;
+      postInstall = lib.replaceStrings [ " rust-analyzer" ] [ "" ] oldAttrs.postInstall;
     }))
     skills
     socat
