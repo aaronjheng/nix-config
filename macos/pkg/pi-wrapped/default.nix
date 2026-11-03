@@ -8,20 +8,23 @@
 # node/npm (mise, nvm, ...) still wins in tool shells; pi's own is the
 # fallback.
 #
-# pi-zsh-completion is re-exported here so `pi-wrapped` is the single
-# package to list; nix-darwin links share/zsh from every installed package
-# into zsh's fpath.
+# The zsh completion is shipped in the same output, so this single package
+# is all that has to be listed; nix-darwin links share/zsh from installed
+# packages into zsh's fpath.
 {
   lib,
+  installShellFiles,
   makeWrapper,
   nodejs,
   pi-coding-agent,
-  pi-zsh-completion,
   runCommand,
 }:
 
 runCommand "pi-wrapped" {
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [
+    installShellFiles
+    makeWrapper
+  ];
   meta = {
     description = "pi-coding-agent with npm on PATH and zsh completion";
     mainProgram = "pi";
@@ -30,7 +33,5 @@ runCommand "pi-wrapped" {
   makeWrapper ${pi-coding-agent}/bin/pi $out/bin/pi \
     --suffix PATH : ${lib.makeBinPath [ nodejs ]}
 
-  mkdir -p $out/share/zsh/site-functions
-  ln -s ${pi-zsh-completion}/share/zsh/site-functions/_pi \
-    $out/share/zsh/site-functions/_pi
+  installShellCompletion --zsh --name _pi ${./pi.zsh-completion}
 ''

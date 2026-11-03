@@ -295,10 +295,8 @@
     nixd
     nixfmt
     oath-toolkit
-    opencode
-    (callPackage ./pkg/pi-wrapped {
-      pi-zsh-completion = callPackage ./pkg/pi-zsh-completion { };
-    })
+    # opencode
+    (callPackage ./pkg/pi-wrapped { })
     pnpm_10
     postgresql
     pyright
