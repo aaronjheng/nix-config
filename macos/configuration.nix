@@ -245,7 +245,7 @@
   users.users.aaron.packages = with pkgs; [
     _7zz
     grafana-alloy
-    # atuin
+    atuin
     awscli2
     bat
     bind
