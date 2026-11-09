@@ -297,7 +297,6 @@
     oath-toolkit
     oxfmt
     oxlint
-    opencode
     (callPackage ./pkg/pi-wrapped { })
     pnpm_10
     postgresql
