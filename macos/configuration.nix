@@ -297,7 +297,7 @@
     oath-toolkit
     oxfmt
     oxlint
-    # opencode
+    opencode
     (callPackage ./pkg/pi-wrapped { })
     pnpm_10
     postgresql
@@ -305,13 +305,7 @@
     ripgrep
     (callPackage ./pkg/redis-cli { })
     ruff
-    rust-analyzer
-    # rustup ships an `rust-analyzer` proxy that produces a buildEnv
-    # filename collision with the standalone package above; drop the
-    # proxy so rust-analyzer is nix-managed instead of rustup-managed.
-    (rustup.overrideAttrs (oldAttrs: {
-      postInstall = lib.replaceStrings [ " rust-analyzer" ] [ "" ] oldAttrs.postInstall;
-    }))
+    rustup
     skills
     socat
     swiftlint
