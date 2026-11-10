@@ -295,6 +295,7 @@
     nixd
     nixfmt
     oath-toolkit
+    opencode
     oxfmt
     oxlint
     (callPackage ./pkg/pi-wrapped { })
