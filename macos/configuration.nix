@@ -312,7 +312,7 @@
     teleport
     temporal-cli
     ty
-    typescript-language-server
+    typescript
     uv
     viu
     wire
