@@ -314,7 +314,6 @@
     zig-shell-completions
     zls
     (callPackage ./pkg/zoreman { })
-    zon2nix
     zoxide
   ];
 }
