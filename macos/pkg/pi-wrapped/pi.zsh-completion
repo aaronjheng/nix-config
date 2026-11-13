@@ -1,7 +1,7 @@
 #compdef pi
 
 # pi - AI coding assistant shell completion (zsh)
-# Covers all static built-in subcommands and flags from pi --help (pi 1.2.0).
+# Covers all static built-in subcommands and flags from pi --help (pi 1.5.2).
 #
 # Usage:
 #   pi [global flags] <subcommand> [subcommand args]
@@ -42,6 +42,7 @@ _pi() {
     'huggingface:Hugging Face'
     'fireworks:Fireworks AI'
     'together:Together AI'
+    'typesafe:TypeSafe (classifier models)'
     'moonshotai:Moonshot AI'
     'moonshotai-cn:Moonshot AI (China)'
     'kimi-coding:Kimi For Coding'
@@ -51,6 +52,7 @@ _pi() {
     'qwen-token-plan:Qwen Token Plan'
     'qwen-token-plan-cn:Qwen Token Plan (China)'
     'qwen-token-plan-individual:Qwen Token Plan (Individual)'
+    'qwen-token-plan-individual-cn:Qwen Token Plan (Individual, China)'
     'xiaomi:Xiaomi MiMo'
     'xiaomi-token-plan-cn:Xiaomi MiMo Token Plan (China)'
     'xiaomi-token-plan-ams:Xiaomi MiMo Token Plan (Amsterdam)'
@@ -115,9 +117,9 @@ _pi() {
     'uninstall:Alias for remove'
     'update:Update pi, extensions, or model catalogs'
     'list:List installed extensions from settings'
-    'config:Open TUI to enable/disable package resources'
-    'auth:Print credentials or check provider readiness'
-    'mcp:Check MCP servers, sign in to or out of OAuth servers'
+    'config:Open TUI to enable/disable package resources (Tab switches scope)'
+    'auth:Log in or out, print credentials, or check provider readiness'
+    'mcp:Manage MCP servers'
   )
 
   # ── Shared approve flags for package subcommands ──────────────────────
@@ -129,52 +131,6 @@ _pi() {
 
 
   _arguments -C -S \
-    '1: :->first' \
-    '*:: :->rest' \
-    && return 0
-
-  case "$state" in
-    first)
-      _describe -t commands 'subcommand' _pi_subcommands
-      if [[ $words[$CURRENT] == -* ]]; then
-        _pi_global_flags
-      elif [[ $words[$CURRENT] == @* ]]; then
-        _files -P '@' -S ' '
-      else
-        _message 'message or @file'
-      fi
-      ;;
-    rest)
-      local cmd="${line[1]}"
-      case "$cmd" in
-        install)   _pi_install ;;
-        remove)    _pi_remove ;;
-        uninstall) _pi_remove ;;
-        update)    _pi_update ;;
-        list)      _pi_list ;;
-        config)    _pi_config ;;
-        auth)      _pi_auth ;;
-        mcp)       _pi_mcp ;;
-        *)
-          if [[ $words[$CURRENT] == -* ]]; then
-            _pi_global_flags
-          elif [[ $words[$CURRENT] == @* ]]; then
-            _files -P '@' -S ' '
-          else
-            _message 'message or @file'
-          fi
-          ;;
-      esac
-      ;;
-  esac
-}
-
-# ── Global flags (shared across all contexts) ─────────────────────────
-_pi_global_flags() {
-  local curcontext="$curcontext" state state_descr line
-  typeset -A opt_args
-
-  _arguments -C -S \
     '--provider[Provider name]:provider:->providers' \
     '--model[Model pattern or ID]:model:' \
     '--api-key[API key]:key:' \
@@ -182,11 +138,11 @@ _pi_global_flags() {
     '*--append-system-prompt[Append text or file to system prompt]:text:' \
     '--mode[Output mode]:mode:->modes' \
     {-p,--print}'[Non-interactive mode: process prompt and exit]' \
-    {-c,--continue}'[Continue previous session]' \
-    {-r,--resume}'[Browse and select a session to resume]' \
-    '--session[Use specific session file or partial UUID]:file:_files' \
-    '--session-id[Use exact project session ID]:id:' \
-    '--fork[Fork session into new session]:file:_files' \
+    {-c,--continue}'[Continue the most recent session for the current directory]' \
+    {-r,--resume}'[Pick a session to resume]' \
+    '--session[Open a session by file path or full/partial ID]:file:_files' \
+    '--session-id[Use the existing session with this ID in the current directory, creating it otherwise]:id:' \
+    '--fork[Fork a session by file path or full/partial ID into the current directory]:file:_files' \
     '--session-dir[Directory for session storage]:dir:_files -/' \
     '--no-session[Do not save session (ephemeral)]' \
     {-n,--name}'[Set session display name]:name:' \
@@ -207,30 +163,67 @@ _pi_global_flags() {
     '*--prompt-template[Load a prompt template file or directory]:path:_files' \
     {-np,--no-prompt-templates}'[Disable prompt template discovery]' \
     '*--theme[Load a theme file or directory]:path:_files' \
-    '--use-theme[Set initial interactive theme for this run]:theme:' \
+    '--use-theme[Set the initial interactive theme for this run]:theme:' \
     '--no-themes[Disable theme discovery]' \
     {-nc,--no-context-files}'[Disable AGENTS.md and CLAUDE.md discovery]' \
-    '--export[Export session to HTML]:session file:_files' \
+    '--export[Export session file to HTML and exit]:session file:_files' \
     '--list-models[List available models with optional search]:search term:' \
     '--verbose[Force verbose startup]' \
     '--tui-mode[TUI mode]:mode:->tui_modes' \
     {-a,--approve}'[Trust project-local files for this run]' \
     {-na,--no-approve}'[Ignore project-local files for this run]' \
-    '--offline[Disable startup network operations]'
+    '--offline[Disable startup network operations]' \
+    {-h,--help}'[Show help]' \
+    {-v,--version}'[Show version number]' \
+    '1: :->first' \
+    '*:: :->rest' \
+    && return 0
 
   case "$state" in
-    providers)       _describe 'provider' _pi_providers ;;
-    modes)           _describe 'mode' _pi_modes ;;
-    thinking_levels) _describe 'thinking level' _pi_thinking_levels ;;
-    tools)           _describe 'tool' _pi_tools ;;
-    tui_modes)       _describe 'TUI mode' _pi_tui_modes ;;
+    first)
+      if [[ $words[$CURRENT] == @* ]]; then
+        _files -P '@' -S ' '
+      else
+        _describe -t commands 'subcommand' _pi_subcommands
+      fi
+      ;;
+    providers)       _describe -t providers 'provider' _pi_providers ;;
+    modes)           _describe -t modes 'mode' _pi_modes ;;
+    thinking_levels) _describe -t thinking-levels 'thinking level' _pi_thinking_levels ;;
+    tools)           _describe -t tools 'tool' _pi_tools ;;
+    tui_modes)       _describe -t tui-modes 'TUI mode' _pi_tui_modes ;;
+    rest)
+      local cmd="${line[1]}"
+      case "$cmd" in
+        install)   _pi_install ;;
+        remove)    _pi_remove ;;
+        uninstall) _pi_remove ;;
+        update)    _pi_update ;;
+        list)      _pi_list ;;
+        config)    _pi_config ;;
+        auth)      _pi_auth ;;
+        mcp)       _pi_mcp ;;
+        *)
+          if [[ $words[$CURRENT] == @* ]]; then
+            _files -P '@' -S ' '
+          else
+            _message 'message or @file'
+          fi
+          ;;
+      esac
+      ;;
   esac
+}
+
+# ── Provider name completion helper (dynamically scoped _pi_providers) ─
+_pi_describe_providers() {
+  _describe -t providers 'provider' _pi_providers
 }
 
 # ── pi install <source> [-l] [-a] ───────────────────────────────────
 _pi_install() {
   _arguments -S \
-    '(-l)--local[Install to project-local directory (.pi/settings.json)]' \
+    {-l,--local}'[Install project-locally (.pi/settings.json)]' \
     {-h,--help}'[Show help]' \
     "${_pi_approve_flags[@]}" \
     '1:source (npm/git/url):'
@@ -239,7 +232,7 @@ _pi_install() {
 # ── pi remove/uninstall <source> [-l] [-a] ──────────────────────────
 _pi_remove() {
   _arguments -S \
-    '(-l)--local[Remove from project-local settings (.pi/settings.json)]' \
+    {-l,--local}'[Remove from project settings (.pi/settings.json)]' \
     {-h,--help}'[Show help]' \
     "${_pi_approve_flags[@]}" \
     '1:package source:'
@@ -269,26 +262,62 @@ _pi_list() {
 # ── pi config [-l] [-a] ─────────────────────────────────────────────
 _pi_config() {
   _arguments -S \
-    '(-l)--local[Edit project-local settings (.pi/settings.json)]' \
+    {-l,--local}'[Edit project overrides (.pi/settings.json)]' \
     {-h,--help}'[Show help]' \
     "${_pi_approve_flags[@]}"
 }
 
 # ── pi auth <command> [options] ─────────────────────────────────────
 _pi_auth() {
+  local curcontext="$curcontext" state state_descr line
+  typeset -A opt_args
+
   _arguments -C -S \
-    '--provider[Provider name]:provider:->providers' \
-    '--model[Model pattern or ID]:model:' \
-    '--json[Output JSON]' \
-    '--credentials[Emit the credential or include it in JSON output]' \
-    '--no-refresh[Do not refresh expired OAuth credentials]' \
-    '--min-expiry[Minimum remaining validity for bearer token]:duration:' \
     {-h,--help}'[Show help]' \
-    '1:command:(print-api-key print-bearer-token check)' \
-    '*:: :->rest'
+    '1:command:(login logout print-api-key print-bearer-token check)' \
+    '*:: :->rest' \
+    && return 0
 
   case "$state" in
-    providers) _describe 'provider' _pi_providers ;;
+    rest)
+      local cmd="${line[1]}"
+      case "$cmd" in
+        login)
+          _arguments -S \
+            '--api-key[Save an API key instead of signing in with an account]' \
+            '--no-browser[Do not open a browser; use another sign-in method, e.g. device code]' \
+            {-h,--help}'[Show help]' \
+            '1:provider:_pi_describe_providers'
+          ;;
+        logout)
+          _arguments -S \
+            {-h,--help}'[Show help]' \
+            '1:provider:_pi_describe_providers'
+          ;;
+        print-api-key)
+          _arguments -S \
+            '--provider[Resolve credentials for a provider]:provider:_pi_describe_providers' \
+            '--model[Resolve credentials from a model]:model:' \
+            {-h,--help}'[Show help]'
+          ;;
+        print-bearer-token)
+          _arguments -S \
+            '--provider[Resolve credentials for a provider]:provider:_pi_describe_providers' \
+            '--model[Resolve credentials from a model]:model:' \
+            '--min-expiry[Minimum remaining token lifetime, e.g. 30m or 1h]:duration:' \
+            {-h,--help}'[Show help]'
+          ;;
+        check)
+          _arguments -S \
+            '--provider[Resolve credentials for a provider]:provider:_pi_describe_providers' \
+            '--model[Resolve credentials from a model]:model:' \
+            '--json[Print the check result as JSON]' \
+            '--credentials[Emit the credential, or include it in JSON output]' \
+            '--no-refresh[Do not refresh expired OAuth credentials during check]' \
+            {-h,--help}'[Show help]'
+          ;;
+      esac
+      ;;
   esac
 }
 
@@ -310,7 +339,7 @@ _pi_mcp() {
         add) _pi_mcp_add ;;
         remove)
           _arguments -S \
-            '(-l)--local[Use .pi/mcp.json in the current project]' \
+            {-l,--local}'[Use .pi/mcp.json in the current project]' \
             {-h,--help}'[Show help]' \
             '1:server name:'
           ;;
@@ -321,12 +350,14 @@ _pi_mcp() {
           ;;
         login)
           _arguments -S \
-            '--timeout[Time limit for the whole sign-in]:seconds:' \
+            {-l,--local}'[Use .pi/mcp.json in the current project]' \
+            '--timeout[Time limit for the whole sign-in (default: 300)]:seconds:' \
             {-h,--help}'[Show help]' \
             '1:server name:'
           ;;
         logout)
           _arguments -S \
+            {-l,--local}'[Use .pi/mcp.json in the current project]' \
             {-h,--help}'[Show help]' \
             '1:server name:'
           ;;
@@ -337,7 +368,7 @@ _pi_mcp() {
 
 _pi_mcp_add() {
   _arguments -S \
-    '(-l)--local[Use .pi/mcp.json in the current project]' \
+    {-l,--local}'[Use .pi/mcp.json in the current project]' \
     '--url[Streamable HTTP server URL (instead of a command)]:url:' \
     '*--env[Environment variable for a stdio server]:KEY=VALUE:' \
     '--cwd[Working directory for a stdio server]:dir:_files -/' \
@@ -346,7 +377,8 @@ _pi_mcp_add() {
     '--oauth-client-id[Pre-registered OAuth client id]:id:' \
     '--oauth-client-secret[OAuth client secret]:secret:' \
     '--oauth-callback-port[Fixed OAuth callback port]:port:' \
-    '--oauth-client-name[Client name for OAuth registration]:name:' \
+    '--oauth-client-name[Client name sent when registering with the OAuth server]:name:' \
+    '--oauth-client-registration[OAuth client registration mode]:mode:(auto cimd dcr)' \
     '--exposure[Tool exposure mode]:mode:->exposures' \
     '--description[What the server offers]:text:' \
     {-h,--help}'[Show help]' \
