@@ -256,7 +256,7 @@
     claude-code
     clipaste
     cue
-    diffoscope
+    # diffoscope
     dingtalk-workspace-cli
     duckdb
     dust
@@ -302,7 +302,7 @@
     skills
     socat
     swiftlint
-    teleport
+    # teleport
     temporal-cli
     ty
     typescript
