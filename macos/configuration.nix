@@ -256,6 +256,7 @@
     claude-code
     clipaste
     cue
+    datadog-pup
     # diffoscope
     dingtalk-workspace-cli
     duckdb
