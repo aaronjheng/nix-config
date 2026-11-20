@@ -307,6 +307,7 @@
     temporal-cli
     ty
     typescript
+    typescript-language-server
     uv
     viu
     wire
