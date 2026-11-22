@@ -310,6 +310,7 @@
     typescript
     typescript-language-server
     uv
+    vault
     viu
     wire
     xh
