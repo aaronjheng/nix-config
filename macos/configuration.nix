@@ -246,6 +246,7 @@
     grafana-alloy
     argocd
     atuin
+    auth0-cli
     awscli2
     bat
     bind
