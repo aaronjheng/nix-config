@@ -259,7 +259,7 @@
     clipaste
     cue
     datadog-pup
-    # diffoscope
+    diffoscope
     dingtalk-workspace-cli
     duckdb
     dust
