@@ -305,7 +305,7 @@
     skills
     socat
     swiftlint
-    # teleport
+    teleport
     temporal-cli
     ty
     typescript
