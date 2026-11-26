@@ -55,7 +55,7 @@ update:
     sudo nix-channel --update
 
 rebuild-dotfiles:
-    chezmoi update --apply
+    chezmoi update --apply --force
 
 [macos]
 upgrade: update rebuild rebuild-dotfiles
