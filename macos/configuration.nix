@@ -285,7 +285,7 @@
     (callPackage ./pkg/kafka-cli { })
     kubectl
     mediainfo
-    mysql-shell_8
+    mysql-shell
     nmap
     nix-update
     nixd
