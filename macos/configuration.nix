@@ -311,7 +311,7 @@
     typescript
     typescript-language-server
     uv
-    vault
+    vault-bin
     viu
     wire
     xh
